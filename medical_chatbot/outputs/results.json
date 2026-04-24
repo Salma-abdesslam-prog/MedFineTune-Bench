@@ -1,0 +1,823 @@
+{
+  "original": {
+    "bleu": 2.7838,
+    "rouge_l": 0.1771,
+    "bertscore_f1": 0.7817,
+    "perplexity": 5.6234,
+    "avg_time_s": 39.2382
+  },
+  "finetuned": {
+    "bleu": 9.8893,
+    "rouge_l": 0.2755,
+    "bertscore_f1": 0.8239,
+    "perplexity": 4.2025,
+    "avg_time_s": 50.4778
+  },
+  "examples": [
+    {
+      "question": "What are the symptoms of Pontocerebellar hypoplasia type 5 ?",
+      "reference": "What are the signs and symptoms of Pontocerebellar hypoplasia type 5? The Human Phenotype Ontology provides the following list of signs and symptoms for Pontocerebellar hypoplasia type 5. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Autosomal recessive inheritance - Microcephaly - Olivopontocerebellar hypoplasia - Seizures - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",
+      "original_answer": "Pontocerebellar hypoplasias (PCH) are rare neurodevelopmental disorders characterized by underdeveloped structures in the brain, particularly those related to movement control, speech, coordination, balance, and cognitive function. There are several types of PCH, each with its own characteristics and associated symptoms.\n\nType 5 of pontocerebellar hypoplasia is one of these types, but it's important to note that there can be significant variation within this subtype as well. Symptoms often include:\n\n1. **Developmental Delay**: Children may start developing motor skills later than expected, such as sitting up, crawling,",
+      "finetuned_answer": "What are the signs and symptoms of Pontocerebellar hypoplasia type 5? The Human Phenotype Ontology provides the following list of signs and symptoms for Pontocerebellar hypoplasia type 5. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Abnormality of metabolism/homeostasis - Autosomal recessive inheritance - Hypotonia - Seizures - Spastic dipleg",
+      "metrics": {
+        "original_bleu": 0.3373,
+        "original_rouge_l": 0.118,
+        "original_bertscore": 0.7351,
+        "original_time_s": 49.902,
+        "finetuned_bleu": 15.2883,
+        "finetuned_rouge_l": 0.4828,
+        "finetuned_bertscore": 0.8914,
+        "finetuned_time_s": 77.79
+      }
+    },
+    {
+      "question": "what research (or clinical trials) is being done for Schizencephaly ?",
+      "reference": "The NINDS conducts and supports a wide range of studies that explore the mechanisms of normal brain development. The knowledge gained from these fundamental studies provides the foundation for understanding how to prevent or treat developmental brain defects such as schizencephaly.",
+      "original_answer": "Schizencephaly is a rare congenital brain malformation characterized by the abnormal splitting of cerebral hemispheres with lack of intervening white matter tissue. Research into this condition is limited, but there is ongoing interest in understanding its pathophysiology, complications, and potential treatments.\n\nHere are some areas where research on Schizencephaly is currently focused:\n\n1. **Pathogenesis**: Understanding how schizencephaly develops could lead to better diagnostic tools and more effective treatments. This includes studying genetic factors, environmental influences, and developmental pathways affected during embryonic development.\n\n2. **Complications and Long-Term Outcomes**: Researchers",
+      "finetuned_answer": "The National Institute of Neurological Disorders and Stroke (NINDS), one of the National Institutes of Health within the U.S. Department of Health and Human Services, conducts schizencephaly research in its laboratories at the National Institutes of Health (NIH), and also supports additional research through grants to major medical institutions across the country. NINDS-funded researchers hope to learn more about how schizencephaly occurs, as well as new ways to treat and prevent this disorder.",
+      "metrics": {
+        "original_bleu": 1.0601,
+        "original_rouge_l": 0.1077,
+        "original_bertscore": 0.7589,
+        "original_time_s": 36.668,
+        "finetuned_bleu": 0.8497,
+        "finetuned_rouge_l": 0.1724,
+        "finetuned_bertscore": 0.7713,
+        "finetuned_time_s": 23.727
+      }
+    },
+    {
+      "question": "What causes Konigsmark Knox Hussels syndrome ?",
+      "reference": "What causes Konigsmark Knox Hussels syndrome? Konigsmark Knox Hussels syndrome is caused by a particular mutation in the OPA1 gene. In most cases, this condition is caused by a mutation that replaces the amino acid arginine with the amino acid histidine at position 445 in the OPA1 protein. This is written as Arg445His or R445H. It is unclear why the R445H mutation causes both hearing and vision loss in affected individuals.",
+      "original_answer": "I'm sorry, but I couldn't find any medical condition named \"Konigsmark Knox Hussels syndrome\" in the literature. It's possible there might be a typo or confusion with other conditions. Could you please check the spelling or provide more details? If it's indeed an uncommon or specific syndrome, it would be best to refer to a reliable medical source or database like PubMed for accurate information.",
+      "finetuned_answer": "What causes Konigsmark-Knox-Hussels syndrome? The exact underlying cause of this condition is unknown. It has been proposed as an autosomal recessive genetic condition; however, there have been no reported cases where two affected individuals had parents who were both carriers of the mutated gene (homozygotes).",
+      "metrics": {
+        "original_bleu": 4.5871,
+        "original_rouge_l": 0.1571,
+        "original_bertscore": 0.7352,
+        "original_time_s": 9.539,
+        "finetuned_bleu": 3.3198,
+        "finetuned_rouge_l": 0.2203,
+        "finetuned_bertscore": 0.7876,
+        "finetuned_time_s": 11.847
+      }
+    },
+    {
+      "question": "What are the genetic changes related to renal tubular acidosis with deafness ?",
+      "reference": "Renal tubular acidosis with deafness is caused by mutations in the ATP6V1B1 or ATP6V0A4 gene. These genes provide instructions for making proteins that are parts (subunits) of a large protein complex known as vacuolar H+-ATPase (V-ATPase). V-ATPases are a group of similar complexes that act as pumps to move positively charged hydrogen atoms (protons) across membranes. Because acids are substances that can \"donate\" protons to other molecules, this movement of protons helps regulate the relative acidity (pH) of cells and their surrounding environment. Tight control of pH is necessary for most biological reactions to proceed properly.  The V-ATPase that includes subunits produced from the ATP6V1B1 and ATP6V0A4 genes is found in the inner ear and in nephrons, which are the functional structures within the kidneys. Each nephron consists of two parts: a renal corpuscle (also known as a glomerulus) that filters the blood, and a renal tubule that reabsorbs substances that are needed and eliminates unneeded substances in urine. The V-ATPase is involved in regulating the amount of acid that is removed from the blood into the urine, and also in maintaining the proper pH of the fluid in the inner ear (endolymph).  Mutations in the ATP6V1B1 or ATP6V0A4 gene impair the function of the V-ATPase complex and reduce the body's capability to control the pH of the blood and the fluid in the inner ear, resulting in the signs and symptoms of renal tubular acidosis with deafness.",
+      "original_answer": "Renal tubular acidosis (RTA) with sensorineural deafness is an extremely rare disorder, and its specific genetic basis can vary. The condition can be inherited in different ways depending on the underlying cause.\n\nThere are several types of RTA:\n\n1. **Type 1 RTA** - Autosomal dominant form, often associated with proximal renal tubular dysfunction.\n2. **Type 2 RTA** - Can be both autosomal recessive and X-linked forms, which may involve distal renal tubular function.\n3. **Other Forms** - Less common forms of RTA such as those caused by mutations",
+      "finetuned_answer": "Renal tubular acidosis with deafness is caused by mutations in the TRAAK gene. This gene provides instructions for making part of a protein complex called an apical sodium bicarbonate transporter (NBC(1)A), which plays a role in reabsorbing bicarbonate ions into the blood during filtration by the kidneys. Mutations in the TRAAK gene lead to abnormal NBC(1)A proteins that cannot properly transport bicarbonate ions from the kidneys' tubules into the bloodstream.  The loss of bicarbonate ion reabsorption results in increased acidity of the urine, which leads to kidney damage and the other features",
+      "metrics": {
+        "original_bleu": 0.9698,
+        "original_rouge_l": 0.1027,
+        "original_bertscore": 0.7105,
+        "original_time_s": 17.959,
+        "finetuned_bleu": 4.5515,
+        "finetuned_rouge_l": 0.2522,
+        "finetuned_bertscore": 0.7967,
+        "finetuned_time_s": 25.235
+      }
+    },
+    {
+      "question": "What is (are) Neck Injuries and Disorders ?",
+      "reference": "Any part of your neck - muscles, bones, joints, tendons, ligaments, or nerves - can cause neck problems. Neck pain is very common. Pain may also come from your shoulder, jaw, head, or upper arms.     Muscle strain or tension often causes neck pain. The problem is usually overuse, such as from sitting at a computer for too long. Sometimes you can strain your neck muscles from sleeping in an awkward position or overdoing it during exercise. Falls or accidents, including car accidents, are another common cause of neck pain. Whiplash, a soft tissue injury to the neck, is also called neck sprain or strain.    Treatment depends on the cause, but may include applying ice, taking pain relievers, getting physical therapy or wearing a cervical collar. You rarely need surgery.",
+      "original_answer": "Neck injuries and disorders refer to various conditions affecting the cervical spine, which includes the seven vertebrae in the neck region. These can be broadly categorized into traumatic and non-traumatic types. Here’s an overview of both:\n\n### Traumatic Neck Injuries\n\n1. **Sprains and Strains**:\n   - **Definition**: A sprain occurs when ligaments (the tough bands of tissue that connect bones at a joint) are stretched beyond their normal range or torn. A strain happens when muscles or tendons (the tissues that attach muscle to bone) are overstretched or injured.\n\n2. **Fractures**:",
+      "finetuned_answer": "Your neck supports the weight of your head. It also lets you turn your head from side to side as well as nod \"yes\" and shake \"no.\" Your neck muscles also allow you to speak and swallow.    The main types of problems with your neck are       -  Strains or sprains - injuries caused by sudden jerking movements    -  Torn ligaments - the bands of tissue that connect bones in your joints    -  Rotator cuff tears - an injury to the tendons that hold the shoulder joint together    -  Cervical disc herniation - a problem with one of the discs between your cervical vert",
+      "metrics": {
+        "original_bleu": 1.0577,
+        "original_rouge_l": 0.1198,
+        "original_bertscore": 0.7533,
+        "original_time_s": 15.434,
+        "finetuned_bleu": 2.0136,
+        "finetuned_rouge_l": 0.1802,
+        "finetuned_bertscore": 0.7762,
+        "finetuned_time_s": 25.173
+      }
+    },
+    {
+      "question": "Is Postural orthostatic tachycardia syndrome inherited ?",
+      "reference": "Is postural orthostatic tachycardia syndrome inherited? Most cases of postural orthostatic tachycardia syndrome (POTS) are not thought to be inherited. Although the condition generally occurs sporadically, some people with POTS do report a family history of orthostatic intolerance (an excessively reduced volume of blood returns to the heart when moving from a lying down to a standing position). This suggests that inherited factors may play a role in the development of POTS in some families.",
+      "original_answer": "Postural Orthostatic Tachycardia Syndrome (POTS) is generally considered to be of unknown cause, meaning it does not have a clearly defined single genetic inheritance pattern. It tends to develop in adolescents and young adults but can affect people at any age.\n\nWhile POTS may sometimes run in families, it is not typically classified as a hereditary disorder. Many cases occur sporadically without a known family history. The exact causes of POTS are not fully understood, but they likely involve a combination of factors including changes in blood flow when the body stands up quickly from lying down or sitting.\n\nIt's important to note that",
+      "finetuned_answer": "What is the genetic cause of postural orthostatic tachycardia syndrome (POTS)? POTS is caused by mutations in the ADRB2 gene, which encodes a receptor on cardiac muscle cells that binds adrenaline (also known as epinephrine). This receptor controls heart rate and blood pressure during periods of stress. Mutations in this gene alter the structure of the receptor so that it cannot bind normally with adrenaline. As a result, adrenaline levels rise even when there is no external source of stress, causing an abnormal increase in heart rate and low blood pressure upon standing up. These problems lead to the characteristic symptoms",
+      "metrics": {
+        "original_bleu": 3.0577,
+        "original_rouge_l": 0.2444,
+        "original_bertscore": 0.8435,
+        "original_time_s": 32.049,
+        "finetuned_bleu": 9.6634,
+        "finetuned_rouge_l": 0.1818,
+        "finetuned_bertscore": 0.7889,
+        "finetuned_time_s": 66.619
+      }
+    },
+    {
+      "question": "What is the outlook for Neurotoxicity ?",
+      "reference": "The prognosis depends upon the length and degree of exposure and the severity of neurological injury. In some instances, exposure to neurotoxicants can be fatal. In others, patients may survive but not fully recover. In other situations, many individuals recover completely after treatment.",
+      "original_answer": "Neurotoxicity refers to damage or dysfunction of nerve cells (neurons) due to exposure to toxic substances. The prognosis for neurotoxicity depends largely on several factors including the type and severity of the toxicity, the extent of neuronal injury, how quickly it was detected and treated, and whether there has been any secondary complications.\n\nHere are some general points regarding the outlook:\n\n1. **Severity and Type**: More severe cases with extensive neuronal damage may result in more permanent neurological deficits. Early detection and intervention can often improve outcomes by minimizing further damage and promoting recovery.\n\n2. **Treatment Timing**: Prompt recognition and initiation of appropriate treatments",
+      "finetuned_answer": "The prognosis for neurotoxicity depends on whether the toxin has damaged the nervous system permanently. For example, in cases of alcohol intoxication or drug overdose, symptoms may last from a few hours to several days. In some cases, individuals who experience neurological damage caused by toxins never regain all their functions. Some drugs that can cause neurotoxicity are also carcinogens (cancer-causing agents), so there may be an increased risk of cancer with continued exposure.",
+      "metrics": {
+        "original_bleu": 1.3913,
+        "original_rouge_l": 0.1769,
+        "original_bertscore": 0.7992,
+        "original_time_s": 38.829,
+        "finetuned_bleu": 2.9379,
+        "finetuned_rouge_l": 0.1695,
+        "finetuned_bertscore": 0.8366,
+        "finetuned_time_s": 36.457
+      }
+    },
+    {
+      "question": "How many people are affected by dopamine beta-hydroxylase deficiency ?",
+      "reference": "Dopamine -hydroxylase deficiency is a very rare disorder. Fewer than 20 affected individuals, all of Western European descent, have been described in the scientific literature.",
+      "original_answer": "Dopamine Beta-Hydroxylase Deficiency is a rare genetic disorder characterized by the absence of an enzyme called dopamine beta hydroxylase (DBH). This enzyme is important because it converts L-DOPA (levodopa) into dopamine, which in turn can be converted into other substances such as dopamine, norepinephrine, and epinephrine.\n\nThe condition is very rare, with estimates suggesting that it affects fewer than 100 individuals worldwide. It has been reported in different populations across various countries, but due to its rarity, comprehensive global data on how many people are affected is difficult to",
+      "finetuned_answer": "Dopamine beta-hydroxylase deficiency is rare; it has been reported in approximately 30 families worldwide. The prevalence of this disorder is unknown because symptoms can be mild in some individuals with the condition.",
+      "metrics": {
+        "original_bleu": 1.4288,
+        "original_rouge_l": 0.2069,
+        "original_bertscore": 0.8202,
+        "original_time_s": 41.75,
+        "finetuned_bleu": 3.3054,
+        "finetuned_rouge_l": 0.2759,
+        "finetuned_bertscore": 0.8515,
+        "finetuned_time_s": 24.946
+      }
+    },
+    {
+      "question": "What are the treatments for Crimean-Congo Hemorrhagic Fever (CCHF) ?",
+      "reference": "Treatment for CCHF is primarily supportive. Care should include careful attention to fluid balance and correction of electrolyte abnormalities, oxygenation and hemodynamic support, and appropriate treatment of secondary infections. The virus is sensitive in vitro to the antiviral drug ribavirin. It has been used in the treatment of CCHF patients reportedly with some benefit. \nRecovery \n                \nThe long-term effects of CCHF infection have not been studied well enough in survivors to determine whether or not specific complications exist. However, recovery is slow.",
+      "original_answer": "Crimean-Congo Hemorrhagic Fever (CCHF) is a viral hemorrhagic fever disease caused by the CCHF virus. The primary goal of treatment is supportive care, as there is no specific antiviral therapy available for CCHF at present.\n\nHere are some general aspects of treating CCHF:\n\n1. **Supportive Care**: This includes managing symptoms such as fever, headache, and other signs of infection. Treatment focuses on providing supportive care which can include:\n   - Rest and hydration.\n   - Pain relief with acetaminophen if advised by a doctor.\n   - Managing complications like bleeding, high blood",
+      "finetuned_answer": "There is no specific treatment available for CCHF infection. Supportive care should be given according to standard guidelines.\n    \nIn patients with severe illness, transfusions of whole blood and platelets can improve outcomes by increasing fibrinogen levels and preventing coagulopathy (disorder in the blood clotting system). The use of convalescent plasma from recovered patients has been shown to be effective in improving patient outcome.\n    \nAntiviral therapy may be considered based on expert opinion. Ribavirin and ribavarin have been used successfully in treating other hemorrhagic fevers such as Ebola virus disease. However, these drugs are not",
+      "metrics": {
+        "original_bleu": 1.7873,
+        "original_rouge_l": 0.142,
+        "original_bertscore": 0.7883,
+        "original_time_s": 32.386,
+        "finetuned_bleu": 3.403,
+        "finetuned_rouge_l": 0.2273,
+        "finetuned_bertscore": 0.8188,
+        "finetuned_time_s": 62.221
+      }
+    },
+    {
+      "question": "What are the treatments for Developmental Dyspraxia ?",
+      "reference": "Treatment is symptomatic and supportive and may include occupational and speech therapy, and \"cueing\" or other forms of communication such as using pictures and hand gestures. Many children with the disorder require special education.",
+      "original_answer": "Developmental Dyspraxia, also known as developmental coordination disorder (DCD), is a neurological condition that affects an individual's ability to plan the movements needed to perform coordinated actions. While there isn't a single \"treatment\" for dyspraxia, a combination of approaches can help manage symptoms and improve functioning in daily life. Here are some common strategies:\n\n1. **Occupational Therapy**: This type of therapy focuses on improving motor skills, hand-eye coordination, and fine motor control. An occupational therapist might work with the person to develop specific activities tailored to their needs.\n\n2. **Speech-Language Therapy**: Although speech-language therapists",
+      "finetuned_answer": "The goals of intervention for children with developmental dyspraxia are to increase the child's self-esteem, improve his/her sense of competence in social situations, and promote an active life style. The following interventions may be recommended: - Speech therapy  - Physical therapy  - Occupational therapy  - Behavioral therapy  - Parent training and support  - Social skills development programs  - Special education classes.",
+      "metrics": {
+        "original_bleu": 1.1744,
+        "original_rouge_l": 0.1203,
+        "original_bertscore": 0.7332,
+        "original_time_s": 35.355,
+        "finetuned_bleu": 1.9793,
+        "finetuned_rouge_l": 0.1538,
+        "finetuned_bertscore": 0.7673,
+        "finetuned_time_s": 36.463
+      }
+    },
+    {
+      "question": "What are the treatments for Floating-Harbor syndrome ?",
+      "reference": "These resources address the diagnosis or management of Floating-Harbor syndrome:  - Gene Review: Gene Review: Floating-Harbor Syndrome  - Genetic Testing Registry: Floating-Harbor syndrome  - KidsHealth: Bone Age Study   These resources from MedlinePlus offer information about the diagnosis and management of various health conditions:  - Diagnostic Tests  - Drug Therapy  - Surgery and Rehabilitation  - Genetic Counseling   - Palliative Care",
+      "original_answer": "Floating-Harbor syndrome is also known as Miraflor syndrome, which is an extremely rare congenital disorder characterized by abnormal growth of the liver, kidney, and spleen (hepatosplenomegaly), and it can cause fluid retention in the abdomen (ascites) and around the lungs (pulmonary edema).\n\nThere is no specific cure for Floating-Harbor syndrome since it is a very rare condition and its management is largely supportive. Treatment focuses on managing symptoms and complications rather than curing the underlying disorder. Here are some common approaches:\n\n1. **Fluid Management**: Since patients often have significant fluid accumulation,",
+      "finetuned_answer": "How might Floating-Harbor syndrome be treated? Treatment is based on the signs and symptoms present in each person. For example, corticosteroid medications may be used to treat seizures, and/or antibiotics may be prescribed if there is an infection. Physical therapy can help with muscle weakness and spasticity. The use of orthopedic appliances such as braces or leg supports may also help alleviate some of the symptoms associated with this condition. More detailed information regarding treatment options for this disorder can be viewed through GeneReviews' Web site at: http://www.ncbi.nlm.nih.gov/books/NBK1286/",
+      "metrics": {
+        "original_bleu": 1.1911,
+        "original_rouge_l": 0.1361,
+        "original_bertscore": 0.7402,
+        "original_time_s": 42.923,
+        "finetuned_bleu": 0.9751,
+        "finetuned_rouge_l": 0.0927,
+        "finetuned_bertscore": 0.7302,
+        "finetuned_time_s": 62.236
+      }
+    },
+    {
+      "question": "What is (are) activated PI3K-delta syndrome ?",
+      "reference": "Activated PI3K-delta syndrome is a disorder that impairs the immune system. Individuals with this condition often have low numbers of white blood cells (lymphopenia), particularly B cells and T cells. Normally, these cells recognize and attack foreign invaders, such as viruses and bacteria, to prevent infection. Beginning in childhood, people with activated PI3K-delta syndrome develop recurrent infections, particularly in the lungs, sinuses, and ears. Over time, recurrent respiratory tract infections can lead to a condition called bronchiectasis, which damages the passages leading from the windpipe to the lungs (bronchi) and can cause breathing problems. People with activated PI3K-delta syndrome may also have chronic active viral infections, commonly Epstein-Barr virus or cytomegalovirus infections.  Another possible feature of activated PI3K-delta syndrome is abnormal clumping of white blood cells. These clumps can lead to enlarged lymph nodes (lymphadenopathy), or the white blood cells can build up to form solid masses (nodular lymphoid hyperplasia), usually in the moist lining of the airways or intestines. While lymphadenopathy and nodular lymphoid hyperplasia are noncancerous (benign), activated PI3K-delta syndrome also increases the risk of developing a form of cancer called B-cell lymphoma.",
+      "original_answer": "Activated PI3K-delta syndrome is an extremely rare genetic disorder characterized by the overactivity of phosphoinositide 3-kinase delta (PI3K-delta), which is a protein involved in cellular signaling pathways. This condition can lead to various health problems if it develops.\n\nThe PI3K-delta enzyme plays a crucial role in regulating cell growth and survival, but when it is continuously active, as seen in this syndrome, it can cause excessive activation of downstream signaling molecules. The syndrome typically involves developmental abnormalities, immunodeficiency, and other complications.\n\nIt's important to note that while I've provided general information here,",
+      "finetuned_answer": "Activated PI3K-delta syndrome is an inherited condition characterized by abnormal brain development and progressive neurological deterioration. Signs and symptoms of this disorder usually appear during infancy. Most individuals with activated PI3K-delta syndrome have delayed speech development; mild learning disabilities; intellectual disability; weak muscle tone (hypotonia); and poor coordination. Some affected individuals experience seizures involving the entire brain (generalized seizure), which can include absence seizures, myoclonic seizures, tonic-clonic seizures, and status epilepticus. Other features of activated PI3K-delta syndrome may include slow growth, short stature, distinctive facial characteristics, recurrent respiratory infections",
+      "metrics": {
+        "original_bleu": 2.0474,
+        "original_rouge_l": 0.1655,
+        "original_bertscore": 0.7625,
+        "original_time_s": 30.508,
+        "finetuned_bleu": 4.111,
+        "finetuned_rouge_l": 0.1614,
+        "finetuned_bertscore": 0.7946,
+        "finetuned_time_s": 54.96
+      }
+    },
+    {
+      "question": "What is (are) fibrodysplasia ossificans progressiva ?",
+      "reference": "Fibrodysplasia ossificans progressiva (FOP) is a disorder in which muscle tissue and connective tissue such as tendons and ligaments are gradually replaced by bone (ossified), forming bone outside the skeleton (extra-skeletal or heterotopic bone) that constrains movement. This process generally becomes noticeable in early childhood, starting with the neck and shoulders and proceeding down the body and into the limbs.  Extra-skeletal bone formation causes progressive loss of mobility as the joints become affected. Inability to fully open the mouth may cause difficulty in speaking and eating. Over time, people with this disorder may experience malnutrition due to their eating problems. They may also have breathing difficulties as a result of extra bone formation around the rib cage that restricts expansion of the lungs.  Any trauma to the muscles of an individual with fibrodysplasia ossificans progressiva, such as a fall or invasive medical procedures, may trigger episodes of muscle swelling and inflammation (myositis) followed by more rapid ossification in the injured area. Flare-ups may also be caused by viral illnesses such as influenza.  People with fibrodysplasia ossificans progressiva are generally born with malformed big toes. This abnormality of the big toes is a characteristic feature that helps to distinguish this disorder from other bone and muscle problems. Affected individuals may also have short thumbs and other skeletal abnormalities.",
+      "original_answer": "Fibrodysplasia ossificans progressiva (FOP) is a rare genetic disorder characterized by the abnormal conversion of connective tissue into bone in response to certain stimuli, typically injuries or even seemingly minor movements. This condition is also known as \"stone man disease\" because affected individuals can develop bony growths throughout their body, which can severely limit mobility.\n\nHere are some key points about FOP:\n\n1. **Causes**: It's caused by mutations in the ACVR1 gene, which leads to an overactive parathyroid hormone receptor type 1 (PTHR1).\n\n2. **Symptoms**:",
+      "finetuned_answer": "Fibrodysplasia ossificans progressiva is an inherited condition in which skeletal muscles become converted into bone (ossification). This progressive disorder typically begins during infancy when muscles of the neck, shoulders, and hips begin to change into bone. Affected individuals may have pain and limited range of motion in these areas as well. In later childhood, muscles in other parts of the body can also be affected by ossification; this usually includes muscle groups in the face and head. In some cases, the jaw and spine are involved. As the disease progresses, many muscles throughout the body can become replaced with bone tissue. Individuals with this",
+      "metrics": {
+        "original_bleu": 3.1096,
+        "original_rouge_l": 0.1307,
+        "original_bertscore": 0.7776,
+        "original_time_s": 42.738,
+        "finetuned_bleu": 2.3397,
+        "finetuned_rouge_l": 0.1914,
+        "finetuned_bertscore": 0.8344,
+        "finetuned_time_s": 60.143
+      }
+    },
+    {
+      "question": "How many people are affected by intestinal pseudo-obstruction ?",
+      "reference": "Primary intestinal pseudo-obstruction is a rare disorder. Its prevalence is unknown. The prevalence of secondary intestinal pseudo-obstruction is also unknown, but it is believed to be more common than the primary form.",
+      "original_answer": "Intestinal pseudo-obstruction is a relatively rare condition that affects the intestines' ability to move food along its length normally. It can impact individuals of all ages but is more common in adults over 60 years old.\n\nThe prevalence of intestinal pseudo-obstruction is difficult to determine with precision due to underreporting and lack of standardized diagnostic criteria. However, based on available studies and reports, it is estimated that:\n\n- The incidence ranges from 1 in every 50,000 to 200,000 population per year.\n- It may affect between 30 to 70 out of every",
+      "finetuned_answer": "Intestinal pseudo-obstruction affects approximately 1 in 200,000 individuals worldwide. It is estimated to account for up to 15 percent of all cases of chronic abdominal pain.",
+      "metrics": {
+        "original_bleu": 5.4413,
+        "original_rouge_l": 0.2812,
+        "original_bertscore": 0.8094,
+        "original_time_s": 40.18,
+        "finetuned_bleu": 1.5705,
+        "finetuned_rouge_l": 0.1935,
+        "finetuned_bertscore": 0.7975,
+        "finetuned_time_s": 15.595
+      }
+    },
+    {
+      "question": "How many people are affected by Leber congenital amaurosis ?",
+      "reference": "Leber congenital amaurosis occurs in 2 to 3 per 100,000 newborns. It is one of the most common causes of blindness in children.",
+      "original_answer": "Leber congenital amaurosis (LCA) is a rare genetic disorder that affects the retina of the eye, leading to severe vision loss often from birth. The exact number of people affected by LCA varies as it's difficult to get precise global statistics due to its rarity and the complexity in diagnosing cases.\n\nAccording to various sources, including the National Eye Institute, an estimated 1 in every 80,000 babies born worldwide has LCA. However, this figure can vary based on specific populations, diagnostic practices, and geographical regions. In some studies, prevalence rates have ranged from 1 in 35",
+      "finetuned_answer": "Leber congenital amaurosis affects an estimated 1 in 30,000 newborns worldwide. This condition is the most common cause of inherited blindness in children under age 5 years.",
+      "metrics": {
+        "original_bleu": 1.9162,
+        "original_rouge_l": 0.1311,
+        "original_bertscore": 0.7763,
+        "original_time_s": 34.86,
+        "finetuned_bleu": 12.4054,
+        "finetuned_rouge_l": 0.5769,
+        "finetuned_bertscore": 0.9185,
+        "finetuned_time_s": 17.95
+      }
+    },
+    {
+      "question": "What is (are) mannose-binding lectin deficiency ?",
+      "reference": "Mannose-binding lectin deficiency is a condition that affects the immune system. People with this condition have low levels of an immune system protein called mannose-binding lectin in their blood. These individuals are prone to recurrent infections, including infections of the upper respiratory tract and other body systems. People with this condition may also contract more serious infections such as pneumonia and meningitis. Depending on the type of infection, the symptoms caused by the infections vary in frequency and severity.  Infants and young children with mannose-binding lectin deficiency seem to be more susceptible to infections, but adults can also develop recurrent infections. In addition, affected individuals undergoing chemotherapy or taking drugs that suppress the immune system are especially prone to infections.",
+      "original_answer": "Mannose-binding lectin (MBL) deficiency is a genetic condition where the body lacks sufficient levels of mannose-binding lectin, an important protein component of the immune system. This can lead to impaired ability of the immune system to fight off certain types of infections.\n\nMannose-binding lectin plays a crucial role in the innate immune response by recognizing and binding to carbohydrates on the surface of microorganisms such as bacteria and fungi. When it binds to these molecules, it triggers the complement system, which helps neutralize pathogens.\n\nDeficiency in MBL can make individuals more susceptible to recurrent bacterial infections, particularly those involving the respiratory tract",
+      "finetuned_answer": "Mannose-binding lectin (MBL) deficiency is an inherited condition in which the body has reduced levels of a protein called mannose-binding lectin (MBL). MBL is found on the surface of certain immune cells and plays a role in fighting bacterial infections by signaling the immune system to attack these microbes.  People with MBL deficiency have increased susceptibility to recurrent infections caused by bacteria such as staphylococci, streptococci, Neisseria meningitidis (a bacterium that causes meningitis), and Haemophilus influenzae. These infections typically affect areas where there are many white blood",
+      "metrics": {
+        "original_bleu": 6.5522,
+        "original_rouge_l": 0.2895,
+        "original_bertscore": 0.831,
+        "original_time_s": 38.204,
+        "finetuned_bleu": 5.9335,
+        "finetuned_rouge_l": 0.2642,
+        "finetuned_bertscore": 0.8264,
+        "finetuned_time_s": 60.022
+      }
+    },
+    {
+      "question": "What is (are) Complete androgen insensitivity syndrome ?",
+      "reference": "Complete androgen insensitivity syndrome is a condition that affects sexual development before birth and during puberty. People with this condition are genetically male (one X and one Y chromosome) but do not respond to male hormones at all. As a result, they generally have normal female external genitalia and female breasts. However, they do not have a uterus or cervix so are unable to menstruate or conceive children. Other signs and symptoms may include undescended testes and sparse to absent pubic hair. Gender identity is typically female. Complete androgen insensitivity syndrome is caused by changes (mutations) in the AR gene and is inherited in an X-linked manner. Treatment and gender assignment can be a very complex issue, and must be individualized with each affected person. In general, surgery may be required to remove testes that are located in unusual places and estrogen replacement therapy can be prescribed after puberty.",
+      "original_answer": "Complete Androgen Insensitivity Syndrome (AIS), also known as Complete Androgen Resistance Syndrome, is a genetic condition in which an individual with typically female reproductive organs has underdeveloped or no response to the male hormone testosterone. This results in ambiguous genitalia at birth, and it can be challenging for clinicians to determine without further testing.\n\nIn this form of AIS:\n\n1. **Genetics**: It's caused by mutations in the androgen receptor gene (AR). These mutations lead to the complete absence or severe impairment of the ability to respond to androgens like testosterone.\n2. **Clinical Presentation**:\n   - Affected individuals have",
+      "finetuned_answer": "Complete androgen insensitivity syndrome (CAIS) is a genetic disorder that causes males to have external genitalia that appear female due to an inability of cells to respond to male hormones (androgens). In CAIS the body reacts poorly to androgens such as testosterone even though the genes contain normal instructions for producing them.  The severity of CAIS varies; some people with this condition have undescended testes (cryptorchidism), while others may be born with ambiguous genitalia. Affected individuals typically lack breast tissue and have no pubic hair. They also have relatively small penis bones, low-set ears, and",
+      "metrics": {
+        "original_bleu": 1.5265,
+        "original_rouge_l": 0.1862,
+        "original_bertscore": 0.7941,
+        "original_time_s": 41.577,
+        "finetuned_bleu": 5.4031,
+        "finetuned_rouge_l": 0.187,
+        "finetuned_bertscore": 0.8238,
+        "finetuned_time_s": 56.412
+      }
+    },
+    {
+      "question": "What are the treatments for congenital contractural arachnodactyly ?",
+      "reference": "These resources address the diagnosis or management of congenital contractural arachnodactyly:  - Gene Review: Gene Review: Congenital Contractural Arachnodactyly  - Genetic Testing Registry: Congenital contractural arachnodactyly  - MedlinePlus Encyclopedia: Arachnodactyly  - MedlinePlus Encyclopedia: Contracture Deformity  - MedlinePlus Encyclopedia: Skeletal Limb Abnormalities   These resources from MedlinePlus offer information about the diagnosis and management of various health conditions:  - Diagnostic Tests  - Drug Therapy  - Surgery and Rehabilitation  - Genetic Counseling   - Palliative Care",
+      "original_answer": "Congenital contractural arachnodactyly is a rare genetic disorder characterized by long thin fingers (arachnodactyly) and joint contractures. The condition can affect various systems of the body, including the musculoskeletal system, respiratory system, and cardiovascular system.\n\n### Treatment:\n\n1. **Physical Therapy:**\n   - **Range of Motion Exercises:** Helps maintain flexibility in affected joints.\n   - **Stretching Exercises:** Can help prevent further contracture formation.\n   - **Strength Training:** May be beneficial if there are underlying muscle weakness issues.\n\n2. **Orthopedic Devices:**\n   - **Spl",
+      "finetuned_answer": "These resources address the diagnosis or management of congenital contractural arachnodactyly:  - Genetic Testing Registry: Congenital contractural arachnodactyly syndrome   These resources from MedlinePlus offer information about the diagnosis and management of various health conditions:  - Diagnostic Tests  - Drug Therapy  - Surgery and Rehabilitation  - Genetic Counseling   - Palliative Care",
+      "metrics": {
+        "original_bleu": 1.8277,
+        "original_rouge_l": 0.1333,
+        "original_bertscore": 0.7609,
+        "original_time_s": 38.241,
+        "finetuned_bleu": 56.1929,
+        "finetuned_rouge_l": 0.8113,
+        "finetuned_bertscore": 0.9548,
+        "finetuned_time_s": 39.003
+      }
+    },
+    {
+      "question": "What are the genetic changes related to MyD88 deficiency ?",
+      "reference": "MyD88 deficiency is caused by mutations in the MYD88 gene, which provides instructions for making a protein that plays an important role in stimulating the immune system to respond to bacterial infection. The MyD88 protein is part of a signaling pathway that is involved in early recognition of pathogens and the initiation of inflammation to fight infection. This signaling pathway is part of the innate immune response.  Mutations in the MYD88 gene lead to the production of a nonfunctional protein or no protein at all. The loss of functional MyD88 protein prevents the immune system from triggering inflammation in response to pathogens that would normally help fight the infections. Because the early immune response is insufficient, bacterial infections occur often and become severe and invasive.  Researchers suggest that as the immune system matures, other systems compensate for the loss of MyD88 protein, accounting for the improvement in the condition that occurs by adolescence.",
+      "original_answer": "MyD88 (myeloid differentiation factor 88) is an adapter protein that plays a crucial role in Toll-like receptor (TLR) signaling pathways. When there's a defect in MyD88 function, it can lead to various clinical manifestations depending on the underlying cause of the deficiency.\n\n### Types of MyD88 Deficiency:\n\n1. **Congenital MyD88 Deficiency**:\n   - This is a rare autosomal recessive disorder characterized by early-onset systemic lupus erythematosus (SLE), recurrent infections, and immune dysregulation.\n   - The primary issue arises",
+      "finetuned_answer": "MyD88 is one of several proteins known as Toll-like receptors (TLRs). These proteins recognize foreign molecules called pathogen-associated molecular patterns (PAMPs) on the surface of bacteria and other microorganisms. When TLRs detect PAMPs, they trigger an immune response by sending chemical signals to nearby cells.  The MyD88 protein plays a critical role in signaling through most TLRs; however, it has no effect when TLR4 detects bacterial LPS. This lack of MyD88 function allows people with this condition to tolerate the bacterium Escherichia coli normally. However, their",
+      "metrics": {
+        "original_bleu": 1.7037,
+        "original_rouge_l": 0.2009,
+        "original_bertscore": 0.7827,
+        "original_time_s": 39.586,
+        "finetuned_bleu": 2.5548,
+        "finetuned_rouge_l": 0.1494,
+        "finetuned_bertscore": 0.8043,
+        "finetuned_time_s": 62.297
+      }
+    },
+    {
+      "question": "What is (are) Takayasu arteritis ?",
+      "reference": "Takayasu arteritis is a condition that causes inflammation of the main blood vessel that carries blood from the heart to the rest of the body (aorta) and its associated branched blood vessels. As a result of the inflammation, the blood vessel walls become thick and make it difficult for blood to flow. Over time, impaired blood flow causes damage to the heart and various other organs of the body.  Although the cause remains unknown, Takayasu arteritis appears to be an autoimmune condition, in which cells that fight infection and disease are wrongly targeted against the body's own tissues.",
+      "original_answer": "Takayasu arteritis, also known as Takayasu's disease, is an uncommon large artery inflammation disorder that primarily affects women in their late teens and early 20s. It is characterized by the narrowing and blockage of one or more major blood vessels supplying the upper body with blood.\n\nThe condition typically involves the three main arteries leading from the heart: the common carotid arteries, which supply blood to the brain; the subclavian arteries, which supply blood to the arms; and the aorta itself. This inflammatory process can lead to severe complications such as:\n\n1. Ischemia (reduced blood flow",
+      "finetuned_answer": "Takayasu arteritis (TA) is an inflammatory condition of the large arteries in the body, particularly those supplying blood to the arms and neck.  It usually begins during mid-adulthood and affects women more often than men. The initial symptom may be a painless bulge in one of the affected arteries.  As the disease progresses, damage can occur to the arteries leading to stroke; heart attack; high blood pressure; and/or kidney failure.  In some cases, surgery may be necessary to correct problems caused by TA such as aortic dissection.  Doctors diagnose this condition through laboratory tests including blood work, imaging",
+      "metrics": {
+        "original_bleu": 3.4447,
+        "original_rouge_l": 0.2143,
+        "original_bertscore": 0.8089,
+        "original_time_s": 39.397,
+        "finetuned_bleu": 2.263,
+        "finetuned_rouge_l": 0.2111,
+        "finetuned_bertscore": 0.8039,
+        "finetuned_time_s": 58.617
+      }
+    },
+    {
+      "question": "What causes Childhood Astrocytomas ?",
+      "reference": "The cause of most childhood brain tumors is not known.",
+      "original_answer": "Childhood astrocytomas are tumors that originate from the astrocytes, which are star-shaped cells in the central nervous system (brain and spinal cord). They can occur at any age but are more commonly diagnosed in children.\n\nThe exact cause of childhood astrocytomas is not fully understood, but research suggests they may be related to genetic factors and environmental exposures. Here are some key points:\n\n1. **Genetic Factors**: Some forms of childhood astrocytoma have been linked to specific genetic abnormalities. For example:\n   - **Li-Fraumeni Syndrome**: A rare inherited cancer syndrome associated with certain genetic mutations.",
+      "finetuned_answer": "The cause of most childhood astrocytomas is unknown.",
+      "metrics": {
+        "original_bleu": 1.0791,
+        "original_rouge_l": 0.1154,
+        "original_bertscore": 0.7856,
+        "original_time_s": 32.194,
+        "finetuned_bleu": 38.8751,
+        "finetuned_rouge_l": 0.6667,
+        "finetuned_bertscore": 0.9178,
+        "finetuned_time_s": 7.265
+      }
+    },
+    {
+      "question": "What are the symptoms of Iridocorneal endothelial syndrome ?",
+      "reference": "What are the signs and symptoms of iridocorneal endothelial (ICE) syndrome? The most common feature of ICE syndrome is the movement of endothelial cells off the cornea onto the iris. This loss of cells from the cornea often leads to swelling of the cornea, distortion of the iris, and variable degrees of distortion of the pupil (the adjustable opening at the center of the iris that allows varying amounts of light to enter the eye). This cell movement also plugs the fluid outflow channels of the eye, causing glaucoma.",
+      "original_answer": "Iridocorneal endothelial (ICE) syndrome is a rare condition characterized by progressive changes in the eye's structure. It primarily affects the cornea and the anterior chamber angle. The syndrome typically progresses through several stages, each with its own set of symptoms:\n\n### Early Stages:\n1. **Redness**: Mild redness or irritation.\n2. **Squamous Epithelioma**: Small white lesions on the surface of the cornea.\n3. **Increased Tears**: More tears than usual.\n\n### Middle Stages:\n1. **Fingerlike Papillae**: Tiny finger-like projections form on the surface of the",
+      "finetuned_answer": "What are the signs and symptoms of iridocorneal endothelial (ICE) syndrome? The Human Phenotype Ontology provides the following list of signs and symptoms for iridocorneal endothelial (ICE) syndrome. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Cataract - Congenital iris coloboma - Corneal endothelial dystrophy - Epithelial basement membrane corneal dyst",
+      "metrics": {
+        "original_bleu": 5.4589,
+        "original_rouge_l": 0.2093,
+        "original_bertscore": 0.776,
+        "original_time_s": 39.94,
+        "finetuned_bleu": 17.1199,
+        "finetuned_rouge_l": 0.2874,
+        "finetuned_bertscore": 0.7853,
+        "finetuned_time_s": 55.759
+      }
+    },
+    {
+      "question": "What are the genetic changes related to pyruvate carboxylase deficiency ?",
+      "reference": "Mutations in the PC gene cause pyruvate carboxylase deficiency.  The PC gene provides instructions for making an enzyme called pyruvate carboxylase. This enzyme is active in mitochondria, which are the energy-producing centers within cells. It is involved in several important cellular functions including the generation of glucose, a simple sugar that is the body's main energy source. Pyruvate carboxylase also plays a role in the formation of the protective sheath that surrounds certain nerve cells (myelin) and the production of brain chemicals called neurotransmitters.  Mutations in the PC gene reduce the amount of pyruvate carboxylase in cells or disrupt the enzyme's activity. The missing or altered enzyme cannot carry out its essential role in generating glucose, which impairs the body's ability to make energy in mitochondria. Additionally, a loss of pyruvate carboxylase allows potentially toxic compounds such as lactic acid and ammonia to build up and damage organs and tissues. Researchers suggest that the loss of pyruvate carboxylase function in the nervous system, particularly the role of the enzyme in myelin formation and neurotransmitter production, also contributes to the neurologic features of pyruvate carboxylase deficiency.",
+      "original_answer": "Pyruvate carboxylase deficiency is an extremely rare inherited disorder resulting from mutations in the PCCA (pyruvate carboxylase subunit A) gene on chromosome 19. This condition affects the way cells process nutrients, particularly glucose and fats.\n\nThe primary issue with this deficiency is that it impairs the enzyme pyruvate carboxylase's ability to convert pyruvate into oxaloacetate, which is then used in the citric acid cycle (also known as the Krebs cycle) to generate energy. When there is a problem with pyruvate carboxylase",
+      "finetuned_answer": "Pyruvate carboxylase deficiency is caused by mutations in the PCCA gene. This gene provides instructions for making one part (subunit) of an enzyme called pyruvate carboxylase. Pyruvate carboxylase plays an important role in fatty acid metabolism; this process produces molecules called fatty acids, which are the primary energy source for most cells in the body.  Mutations in the PCCA gene lead to the production of abnormal subunits of pyruvate carboxylase. As a result, these subunits are unable to bind with other enzymes' subunits to form functional",
+      "metrics": {
+        "original_bleu": 0.9624,
+        "original_rouge_l": 0.1919,
+        "original_bertscore": 0.8183,
+        "original_time_s": 44.469,
+        "finetuned_bleu": 6.8661,
+        "finetuned_rouge_l": 0.2618,
+        "finetuned_bertscore": 0.8521,
+        "finetuned_time_s": 67.57
+      }
+    },
+    {
+      "question": "What is (are) biotinidase deficiency ?",
+      "reference": "Biotinidase deficiency is an inherited disorder in which the body is unable to recycle the vitamin biotin. If this condition is not recognized and treated, its signs and symptoms typically appear within the first few months of life, although it can also become apparent later in childhood.  Profound biotinidase deficiency, the more severe form of the condition, can cause seizures, weak muscle tone (hypotonia), breathing problems, hearing and vision loss, problems with movement and balance (ataxia), skin rashes, hair loss (alopecia), and a fungal infection called candidiasis. Affected children also have delayed development. Lifelong treatment can prevent these complications from occurring or improve them if they have already developed.  Partial biotinidase deficiency is a milder form of this condition. Without treatment, affected children may experience hypotonia, skin rashes, and hair loss, but these problems may appear only during illness, infection, or other times of stress.",
+      "original_answer": "Biotinidase deficiency, also known as biotin-responsive diarrhea syndrome, is an inherited metabolic disorder that affects the body's ability to utilize biotin (also called vitamin H), which is essential for healthy skin, hair, and nails, as well as normal growth and development.\n\nThe condition occurs when there is insufficient production of biotinidase, an enzyme necessary for recycling biotin so it can be reused in the body. This leads to a deficiency of biotin, resulting in symptoms such as:\n\n1. Severe biotin deficiency\n2. Diarrhea\n3. Failure to thrive (",
+      "finetuned_answer": "Biotinidase deficiency is an inherited disorder in which the body cannot use biotin effectively. Biotin is a water-soluble vitamin found in foods such as eggs, liver, kidney, soybeans, nuts, whole grains, dairy products, fish, shellfish, and yeast. Biotinidase deficiency impairs the absorption of biotin from food and makes it difficult for cells to use this vitamin.  Signs and symptoms of biotinidase deficiency typically appear within days after birth and include failure to gain weight and grow at the expected rate (failure-to-thrive), seizures, developmental delay,",
+      "metrics": {
+        "original_bleu": 1.9699,
+        "original_rouge_l": 0.188,
+        "original_bertscore": 0.7914,
+        "original_time_s": 39.261,
+        "finetuned_bleu": 7.4563,
+        "finetuned_rouge_l": 0.1983,
+        "finetuned_bertscore": 0.8042,
+        "finetuned_time_s": 59.673
+      }
+    },
+    {
+      "question": "What is (are) Cavernous Malformation ?",
+      "reference": "Cerebral cavernous malformations (CCMs) are vascular lesions comprised of clusters of tightly packed, abnormally thin-walled small blood vessels (capillaries) that displace normal neurological tissue in the brain or spinal cord. The vessels are filled with slow-moving or stagnant blood that is usually clotted or in a state of decomposition. Cavernous malformations can occur in the brain, spinal cord, and some other body regions. In the brain and spinal cord these cavernous lesions are quite fragile and are prone to bleeding, causing hemorrhagic strokes (bleeding into the brain), seizures, and neurological deficits. CCMs can range in size from a few fractions of an inch to several inches in diameter, depending on the number of blood vessels involved. Some people develop multiple lesions while others never experience related medical problems. Hereditary forms of CCM are caused by mutations in one of three CCM disease genes: CCM1, CCM2, and CCM3. A large population with hereditary CCM disease is found in New Mexico and the Southwestern United States, in which the disease is caused by mutations in the gene CCM1 (or KRIT1).",
+      "original_answer": "A cavernous malformation, also known as a venous angioma or a venous malformation, is a type of vascular lesion in the brain or spinal cord. It consists of dilated veins without any significant arterial branches.\n\nHere are some key points about cavernous malformations:\n\n1. Location: They can occur anywhere in the central nervous system but most commonly affect the basal ganglia and thalamus regions of the brain.\n\n2. Composition: These lesions consist mainly of thin-walled, highly compliant veins filled with blood under high pressure. The walls often have thin connective tissue or lack it entirely, which makes them vulnerable",
+      "finetuned_answer": "Cavernous malformations (CMs), also called cavernous angiomas or venous malformations (VMS), are abnormal clusters of blood vessels in the brain. CMs can occur anywhere in the brain but usually affect the cerebral hemispheres (front half). They may be single or multiple. The risk of stroke increases with the number of VMS. Most people with VMS have no symptoms; however, some may develop headaches, seizures, weakness on one side of their body, speech problems, memory loss, and other neurological signs and symptoms. There is an increased chance of developing new CMs after surgery for existing",
+      "metrics": {
+        "original_bleu": 4.1289,
+        "original_rouge_l": 0.1929,
+        "original_bertscore": 0.7813,
+        "original_time_s": 38.45,
+        "finetuned_bleu": 2.9312,
+        "finetuned_rouge_l": 0.2044,
+        "finetuned_bertscore": 0.8027,
+        "finetuned_time_s": 56.486
+      }
+    },
+    {
+      "question": "What is the outlook for Gastrointestinal Carcinoid Tumors ?",
+      "reference": "Certain factors affect prognosis (chance of recovery) and treatment options. The prognosis (chance of recovery) and treatment options depend on the following:         - Where the tumor is in the gastrointestinal tract.    - The size of the tumor.     - Whether the cancer has spread from the stomach and intestines to other parts of the body, such as the liver or lymph nodes.    - Whether the patient has carcinoid syndrome or has carcinoid heart syndrome.    - Whether the cancer can be completely removed by surgery.     - Whether the cancer is newly diagnosed or has recurred.",
+      "original_answer": "The prognosis for gastrointestinal carcinoid tumors can vary widely depending on several factors including the type of tumor, its size, whether it has spread (metastasized), and the overall health status of the individual.\n\nGlobally, the majority of carcinoids are well-differentiated and slow-growing, making them less aggressive compared to some other types of cancer. They often have a favorable prognosis, especially when they remain localized and haven't spread to other parts of the body.\n\nHowever, if the carcinoid tumor has metastasized (spread) beyond the digestive tract, such as into nearby lymph nodes, lungs, liver, or other organs",
+      "finetuned_answer": "Certain factors affect prognosis (chance of recovery) and treatment options. The prognosis (chance of recovery) depends on:         - Whether the tumor can be completely removed by surgery.    -  How fast the tumor grows.    - Where the tumor started in the body.     - Whether there is more than one site where carcinoid tumors have spread to at the time of diagnosis.        Treatment options depend on:         - The size of the tumor.    - Where the tumor has spread.    - Whether the patient has any other health problems.    - Whether all of the tumor was removed during surgery.",
+      "metrics": {
+        "original_bleu": 8.4292,
+        "original_rouge_l": 0.2473,
+        "original_bertscore": 0.8115,
+        "original_time_s": 42.672,
+        "finetuned_bleu": 43.1897,
+        "finetuned_rouge_l": 0.4483,
+        "finetuned_bertscore": 0.9057,
+        "finetuned_time_s": 59.891
+      }
+    },
+    {
+      "question": "What are the genetic changes related to PPM-X syndrome ?",
+      "reference": "Mutations in the MECP2 gene cause PPM-X syndrome. The MECP2 gene provides instructions for making a protein called MeCP2 that is critical for normal brain function. Researchers believe that this protein has several functions, including regulating other genes in the brain by switching them off when they are not needed. The MeCP2 protein likely plays a role in maintaining connections (synapses) between nerve cells. The MeCP2 protein may also control the production of different versions of certain proteins in nerve cells. Although mutations in the MECP2 gene disrupt the normal function of nerve cells, it is unclear how these mutations lead to the signs and symptoms of PPM-X syndrome.  Some MECP2 gene mutations that cause PPM-X syndrome disrupt attachment (binding) of the MeCP2 protein to DNA, and other mutations alter the 3-dimensional shape of the protein. These mutations lead to the production of a MeCP2 protein that cannot properly interact with DNA or other proteins and so cannot control the expression of genes. It is unclear how MECP2 gene mutations lead to the signs and symptoms of PPM-X syndrome, but misregulation of genes in the brain likely plays a role.",
+      "original_answer": "PPM-X syndrome is also known as Proximal Spastic Paraplegia with Mental Retardation (PSPR), which is an extremely rare autosomal recessive disorder. The condition is characterized by progressive spastic paraplegia, intellectual disability, and other physical anomalies.\n\nThe genetic cause of PPM-X syndrome is associated with mutations in the **DPP4** gene, which encodes the Dipeptidyl Peptidase-4 enzyme. This enzyme plays a role in blood glucose regulation but does not seem to be directly involved in the development of PPM-X symptoms.\n\nIn individuals affected by this",
+      "finetuned_answer": "PPM-X syndrome is caused by mutations in the POLR3A gene. This gene provides instructions for making part of an enzyme called RNA polymerase III, which transcribes (copies) DNA into a single strand of messenger RNA (mRNA). In most cells, this enzyme copies small pieces of DNA (called genes), but it also helps produce certain types of molecules called non-coding RNAs.  The POLR3A gene mutations that cause PPM-X syndrome result in the production of an abnormal version of RNA polymerase III. These altered enzymes impair their ability to copy DNA segments needed for normal development, resulting in the signs",
+      "metrics": {
+        "original_bleu": 2.4587,
+        "original_rouge_l": 0.156,
+        "original_bertscore": 0.7598,
+        "original_time_s": 42.662,
+        "finetuned_bleu": 5.9426,
+        "finetuned_rouge_l": 0.2095,
+        "finetuned_bertscore": 0.8107,
+        "finetuned_time_s": 62.426
+      }
+    },
+    {
+      "question": "What causes Hereditary cerebral hemorrhage with amyloidosis ?",
+      "reference": "What causes hereditary cerebral hemorrhage with amyloidosis - Dutch type? The clinical symptoms of hereditary cerebral hemorrhage with amyloidosis - Dutch type are caused by the build-up of a protein called amyloid within the arterial walls of the brain. This protein build-up causes bleeding into the brain. The symptoms occur because bleeding in the brain harms brain tissue. Hereditary cerebral hemorrhage with amyloidosis-Dutch type is an autosomal dominant disorder with complete penetrance (all individuals who inherit the mutated gene will develop the condition). The likely genetic defect is in the amyloid protein precursor protein (APP) gene on chromosome 21.",
+      "original_answer": "Hereditary Cerebral Hemorrhagic Amyloidosis (HCHA) is a very rare genetic disorder characterized by recurrent intracranial bleeding episodes due to the accumulation of amyloid-beta protein in blood vessels. This condition is caused by mutations in the APP (amyloid precursor protein) gene.\n\nThe key points regarding the cause of HCHA include:\n\n1. **Genetic Basis**: The disease is inherited in an autosomal dominant manner, meaning it can be passed down from one parent to their child. It is associated with specific mutations in the APP gene, which leads to abnormal processing of amyloid precursor protein into beta-amyloid",
+      "finetuned_answer": "What causes hereditary cerebral hemorrhage with amyloidosis? Hereditary cerebral hemorrhage with amyloidosis (HCHWA) is caused by mutations in the APP gene. The APP gene provides instructions for making an enzyme called beta-secretase 1 (BACE-1). BACE-1 helps process certain proteins, including amyloid-beta peptides (A-beta), which are thought to be involved in the formation of brain plaques associated with Alzheimer's disease. In the brain, A-beta can clump together to form insoluble plaques that accumulate around nerve cells and cause damage. Researchers believe that HCHWA may result from abnormal",
+      "metrics": {
+        "original_bleu": 3.4575,
+        "original_rouge_l": 0.2551,
+        "original_bertscore": 0.8137,
+        "original_time_s": 38.959,
+        "finetuned_bleu": 12.2846,
+        "finetuned_rouge_l": 0.2383,
+        "finetuned_bertscore": 0.8062,
+        "finetuned_time_s": 54.595
+      }
+    },
+    {
+      "question": "What are the symptoms of Intravenous leiomyomatosis ?",
+      "reference": "What are the signs and symptoms of intravenous leiomyomatosis? IVL most often does not cause detectable signs or symptoms. In fact, they may be found by chance during surgery. When symptoms do arise, they can include abnormal uterine bleeding, lower abdominal tenderness, ad venous thrombosis. When IVL in the uterus is exposed to venous blood that flows to the heart, it usually grows slowly and may reach the heart undetected. When IVL reaches the heart, it can result in pulmonary embolisms, cardiac failure, fainting, and in some cases, sudden death. Most people do not experience symptoms until the IVL reaches the heart.",
+      "original_answer": "Intravenous leiomyomatosis is an extremely rare condition characterized by the abnormal growth of smooth muscle cells within blood vessels. It typically occurs in large veins such as the inferior vena cava (IVC), but can also affect other veins. This condition does not have a well-defined set of symptoms because it often presents without noticeable signs unless there is significant vein enlargement or obstruction.\n\nHowever, some possible symptoms associated with intravenous leiomyomatosis might include:\n\n1. **Pain**: The affected vein may cause pain along its course, particularly if it becomes enlarged.\n2. **Swelling**: There could be swelling in the leg",
+      "finetuned_answer": "What are the signs and symptoms of Intravenous leiomyomatosis? The Human Phenotype Ontology provides the following list of signs and symptoms for Intravenous leiomyomatosis. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Abnormality of the skin - Autosomal dominant inheritance - Leiomyoma - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a",
+      "metrics": {
+        "original_bleu": 1.6176,
+        "original_rouge_l": 0.1294,
+        "original_bertscore": 0.7914,
+        "original_time_s": 38.322,
+        "finetuned_bleu": 6.8776,
+        "finetuned_rouge_l": 0.203,
+        "finetuned_bertscore": 0.7593,
+        "finetuned_time_s": 61.925
+      }
+    },
+    {
+      "question": "what research (or clinical trials) is being done for Landau-Kleffner Syndrome ?",
+      "reference": "The NINDS supports broad and varied programs of research on epilepsy and developmental disorders. This research is aimed at discovering new ways to prevent, diagnose, and treat epilepsy and developmental disorders and, ultimately, to find cures for them.",
+      "original_answer": "Landau-Kleffner Syndrome (LKS), also known as Acute Disconnected Speech Syndrome, is a rare disorder characterized by the sudden onset of difficulty understanding spoken language in children who previously had normal speech development. It affects approximately 1-2 children per million population each year.\n\nCurrently, there is ongoing research and clinical trials focused on LKS. While it's important to note that progress can vary, here are some areas where researchers and clinicians are focusing:\n\n1. **Etiology and Pathophysiology**: Understanding the underlying causes of LKS is crucial. Research aims to identify genetic factors and potential neurobiological mechanisms that",
+      "finetuned_answer": "The NINDS supports research on disorders such as LKS aimed at increasing understanding of these disorders and finding ways to prevent, treat, and cure them.",
+      "metrics": {
+        "original_bleu": 0.6286,
+        "original_rouge_l": 0.1324,
+        "original_bertscore": 0.7298,
+        "original_time_s": 40.84,
+        "finetuned_bleu": 10.5563,
+        "finetuned_rouge_l": 0.4762,
+        "finetuned_bertscore": 0.8755,
+        "finetuned_time_s": 17.806
+      }
+    },
+    {
+      "question": "What is (are) Muir-Torre syndrome ?",
+      "reference": "Muir-Torre syndrome (MTS) is a form of Lynch syndrome and is characterized by sebaceous (oil gland) skin tumors in association with internal cancers. The most common internal site involved is the gastrointestinal tract (with almost half of affected people having colorectal cancer), followed by the genitourinary tract. Skin lesions may develop before or after the diagnosis of the internal cancer. MTS is caused by changes (mutations) in the MLH1 or MSH2 genes and is inherited in an autosomal dominant manner. A mutation in either of these genes gives a person an increased lifetime risk of developing the skin changes and types of cancer associated with the condition.",
+      "original_answer": "Muir-Torre Syndrome is a rare inherited condition characterized by the presence of three main features: cutaneous sebaceous nevi (abnormal skin growths), keratoacanthomas (a type of non-cancerous growth on the skin), and internal or extracutaneous malignancies (cancers). This syndrome can be associated with genetic mutations in the TP53 gene.\n\nHere’s a more detailed explanation:\n\n1. **Cutaneous Sebaceous Nevi**: These are abnormal growths that develop when oil-producing glands called sebaceous glands become enlarged. They often appear as pink or tan spots or bumps.\n\n2",
+      "finetuned_answer": "Muir-Torre syndrome is an inherited condition characterized by the development of certain types of tumors and skin abnormalities. The most common tumor in affected individuals is a cancer called cutaneous signet ring cell carcinoma which occurs on the skin. Other tumors commonly found in people with Muir-Torre syndrome include adnexal carcinomas (cancers that develop from cells of the hair follicles), gastrointestinal adenocarcinomas (cancerous growths that arise in glands of the digestive system), and choriocarcinoma (a type of cancer involving tissues that line the uterus).  People with this condition also have characteristic skin lesions known",
+      "metrics": {
+        "original_bleu": 1.9963,
+        "original_rouge_l": 0.2268,
+        "original_bertscore": 0.7942,
+        "original_time_s": 42.821,
+        "finetuned_bleu": 4.978,
+        "finetuned_rouge_l": 0.2647,
+        "finetuned_bertscore": 0.8047,
+        "finetuned_time_s": 61.204
+      }
+    },
+    {
+      "question": "Who is at risk for Lujo Hemorrhagic Fever (LUHF)? ?",
+      "reference": "Like all arenaviruses, Lujo virus has a rodent host as its reservoir. Humans can contract LUHF through contact with an infected rodent. Contact can be direct or through inhalation of aerosolized Lujo virus from the urine or feces of infected rodents. \n \nPerson-to-person transmission of Lujo virus was observed in the small, nosocomial cluster of hemorrhagic disease which resulted in the discovery of the Lujo virus. \n \nTransmission of arenaviruses, and Lujo virus in particular, is most likely the result of direct contact with the body fluids of an infected person, in the absence of infection control precautions.",
+      "original_answer": "Lujo hemorrhagic fever (LUHF) is a rare viral hemorrhagic disease caused by the LuJo virus. The virus was first identified in 2012 after an outbreak among individuals who consumed infected bushmeat (the meat of wild animals). \n\nThe primary risk factor for LUHF involves direct exposure to the LuJo virus through the consumption of infected bushmeat. There have been no confirmed cases outside of those linked to this type of food source. Therefore, individuals at risk include:\n\n- People who consume bushmeat from Africa, particularly those living in regions where the LuJo virus is present.\n- Individuals who handle",
+      "finetuned_answer": "The virus that causes LUHF has been found in several species of African monkeys. People who handle wild primates should take precautions against infection with other viruses carried by the animals.\n    \nNo humans have been diagnosed with LUHF outside Uganda. It has never been transmitted from one person to another.\n    \nMore on: Resources For Health Professionals: Transmission",
+      "metrics": {
+        "original_bleu": 1.8852,
+        "original_rouge_l": 0.1959,
+        "original_bertscore": 0.7962,
+        "original_time_s": 38.147,
+        "finetuned_bleu": 0.59,
+        "finetuned_rouge_l": 0.1032,
+        "finetuned_bertscore": 0.7634,
+        "finetuned_time_s": 14.531
+      }
+    },
+    {
+      "question": "What is (are) Acute Lymphocytic Leukemia ?",
+      "reference": "Leukemia is cancer of the white blood cells. White blood cells help your body fight infection. Your blood cells form in your bone marrow. In leukemia, however, the bone marrow produces abnormal white blood cells. These cells crowd out the healthy blood cells, making it hard for blood to do its work. In acute lymphocytic leukemia (ALL), also called acute lymphoblastic leukemia, there are too many of specific types of white blood cells called lymphocytes or lymphoblasts. ALL is the most common type of cancer in children.    Possible risk factors for ALL include being male, being white, previous chemotherapy treatment, exposure to radiation, and for adults, being older than 70.    Symptoms of ALL include:       - Weakness or feeling tired    - Fever    - Easy bruising or bleeding    - Bleeding under the skin    - Shortness of breath    - Weight loss or loss of appetite    - Pain in the bones or stomach    - Pain or a feeling of fullness below the ribs    - Painless lumps in the neck, underarm, stomach, or groin       Tests that examine the blood and bone marrow diagnose ALL. Treatments include chemotherapy, radiation therapy, stem cell transplants, and targeted therapy. Targeted therapy uses substances that attack cancer cells without harming normal cells. Once the leukemia is in remission, you need additional treatment to make sure that it does not come back.    NIH: National Cancer Institute",
+      "original_answer": "Acute lymphoblastic leukemia (ALL), also known as acute lymphoid leukemia, is a type of cancer that starts in the bone marrow and spreads throughout the body. In this disease, immature white blood cells called lymphoblasts multiply uncontrollably and accumulate in the bloodstream instead of developing into mature immune system cells.\n\nKey points about ALL:\n\n1. **Nature**: It's an aggressive form of leukemia.\n2. **Cell Origin**: Starts with abnormal lymphoblasts (immature lymphocytes).\n3. **Risk Age**: Commonly occurs in children under 15 years old, but can affect adults too.\n4.",
+      "finetuned_answer": "Key Points\n                    - Acute lymphocytic leukemia is a disease in which malignant (cancer) cells form in the white blood cells of the body.\n                \n                \n                    Acute lymphocytic leukemia is a disease in which malignant (cancer) cells form in the white blood cells of the body.\n                    Leukemia is cancer of the white blood cells. White blood cells help the body fight infection. There are two types of white blood cells, each made from different kinds of stem cells. In healthy bodies, these stem cells grow into mature white blood cells with specific functions:       -  B lymphocytes make antibodies that protect the",
+      "metrics": {
+        "original_bleu": 3.6963,
+        "original_rouge_l": 0.1377,
+        "original_bertscore": 0.7899,
+        "original_time_s": 16.213,
+        "finetuned_bleu": 6.6666,
+        "finetuned_rouge_l": 0.2115,
+        "finetuned_bertscore": 0.8116,
+        "finetuned_time_s": 54.805
+      }
+    },
+    {
+      "question": "Is Henoch-Schonlein purpura inherited ?",
+      "reference": "Can Henoch-Schonlein purpura be inherited? The cause of Henoch-Schonlein purpura is currently unknown.  Some evidence suggests that genetic predisposition may contribute to the development of this disease in some cases.  Only a few families with multiple relatives affected by HSP have been reported in the medical literature.  The association between particular genes and a slight increase in the chance of developing HSP has not been proven.",
+      "original_answer": "Henoch-Schönlein purpura (HSP) is typically considered an acquired disease rather than one that is strongly inherited. It is more often associated with certain conditions such as infections, allergies, and other autoimmune diseases. HSP itself is not commonly thought of as being directly inherited in the same way that some genetic disorders can be.\n\nHowever, it's important to note that there may be a tendency towards the development of HSP in families where individuals have had similar conditions before, especially if they share environmental triggers or underlying risk factors. Sometimes, people who develop HSP have relatives with autoimmune conditions, but this does not mean H",
+      "finetuned_answer": "How is Henoch-Schnlein purpura (HSP) inherited? The inheritance of HSP has been difficult to establish because it can occur sporadically in families as well as be associated with certain genetic syndromes such as Wiskott-Aldrich syndrome, Ataxia telangiectasia, Chediak-Higashi syndrome, and familial Mediterranean fever. A recent study published in the journal Pediatrics showed that 15% of children affected by HSP had an underlying autosomal dominant disorder which included: Cerebral autosomal recessive arteriopathy with subcortical infarcts and leuko",
+      "metrics": {
+        "original_bleu": 2.4508,
+        "original_rouge_l": 0.1943,
+        "original_bertscore": 0.7999,
+        "original_time_s": 39.824,
+        "finetuned_bleu": 4.149,
+        "finetuned_rouge_l": 0.2041,
+        "finetuned_bertscore": 0.8001,
+        "finetuned_time_s": 61.503
+      }
+    },
+    {
+      "question": "How many people are affected by X-linked severe combined immunodeficiency ?",
+      "reference": "X-linked SCID is the most common form of severe combined immunodeficiency. Its exact incidence is unknown, but the condition probably affects at least 1 in 50,000 to 100,000 newborns.",
+      "original_answer": "X-linked Severe Combined Immunodeficiency (SCID) is a rare genetic disorder that primarily affects males. It occurs in approximately 1 in every 50,000 newborns. This means that out of all the newborn babies born each year, around one baby will be diagnosed with X-linked SCID.\n\nIt's important to note that while this prevalence rate is relatively low overall, it can have significant implications for those individuals who are affected. If you need more specific information or if you suspect someone may be affected, I would recommend consulting with a medical professional.",
+      "finetuned_answer": "The incidence of X-SCID is estimated to be 1 in 400,000 newborns worldwide.",
+      "metrics": {
+        "original_bleu": 1.5636,
+        "original_rouge_l": 0.1905,
+        "original_bertscore": 0.8207,
+        "original_time_s": 26.487,
+        "finetuned_bleu": 2.2205,
+        "finetuned_rouge_l": 0.2979,
+        "finetuned_bertscore": 0.8653,
+        "finetuned_time_s": 9.915
+      }
+    },
+    {
+      "question": "What are the symptoms of Cataract Hutterite type ?",
+      "reference": "What are the signs and symptoms of Cataract Hutterite type? The Human Phenotype Ontology provides the following list of signs and symptoms for Cataract Hutterite type. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Autosomal recessive inheritance - Congenital cataract - Juvenile cataract - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",
+      "original_answer": "It appears there might be some confusion in your question. \"Cataract Hutterite type\" is not a recognized term in ophthalmology (the branch of medicine dealing with eye diseases). The most common form of cataract is an age-related clouding of the natural lens inside the eye. Other types can occur but they are typically classified by their cause rather than by ethnic or cultural terms.\n\nTypical symptoms of cataracts include:\n\n1. Cloudy or blurry vision.\n2. Problems seeing at night or in low light conditions.\n3. Sensitivity to bright lights.\n4. Seeing halos around lights.\n5.",
+      "finetuned_answer": "What are the signs and symptoms of Cataract Hutterite type? The Human Phenotype Ontology provides the following list of signs and symptoms for Cataract Hutterite type. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Autosomal dominant inheritance - Congenital cataracts - Myopia - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in",
+      "metrics": {
+        "original_bleu": 0.8158,
+        "original_rouge_l": 0.1155,
+        "original_bertscore": 0.7251,
+        "original_time_s": 44.175,
+        "finetuned_bleu": 21.6602,
+        "finetuned_rouge_l": 0.5627,
+        "finetuned_bertscore": 0.9137,
+        "finetuned_time_s": 58.938
+      }
+    },
+    {
+      "question": "What are the symptoms of Complex regional pain syndrome ?",
+      "reference": "What are the signs and symptoms of complex regional pain syndrome? Complex regional pain syndrome (CRPS) usually develops after an injury, surgery, stroke or heart attack. The key symptom of CRPS is continuous, intense pain that is out of proportion to the severity of the injury. The pain gets worse over time. CRPS most often affects one of the arms, legs, hands, or feet, and the pain often spreads throughout the entire affected arm or leg. Other signs and symptoms may include: sensitivity to touch or cold swelling of the painful area changes in skin temperature, color, and/or texture joint stiffness and swelling muscle weakness and/or muscle spasms Symptoms may change over time and vary from person to person. In some people, signs and symptoms of go away on their own. In others, symptoms can persist for months to years.",
+      "original_answer": "Complex Regional Pain Syndrome (CRPS), also known as Reflex Sympathetic Dystrophy, is a chronic pain disorder characterized by intense pain in one limb (arm, leg, hand, or foot). The symptoms can vary but typically include:\n\n1. Intense pain: This is often described as burning or shocking and may be present even when there's no apparent cause or injury.\n\n2. Hyperalgesia: An exaggerated response to pain stimuli.\n\n3. Allodynia: Feeling pain from normal touch or pressure.\n\n4. Changes in skin:\n   - Skin temperature: Usually increased (redness) or decreased (coolness",
+      "finetuned_answer": "What are the signs and symptoms of complex regional pain syndrome? The signs and symptoms of complex regional pain syndrome (CRPS) include: Pain in one limb Muscle stiffness Joint contractures Swelling Numbness or tingling sensations Sweating changes Redness Changes in hair growth Loss of muscle tissue Skin color changes Decreased blood flow to affected areas Rapid increase in bone density Rapid decrease in bone density Increased sensitivity to cold Increased sensitivity to heat In severe cases, CRPS can cause loss of movement and sensation in an affected area; however, most people with CRPS retain some level of movement and feeling.",
+      "metrics": {
+        "original_bleu": 2.2173,
+        "original_rouge_l": 0.2348,
+        "original_bertscore": 0.7932,
+        "original_time_s": 42.989,
+        "finetuned_bleu": 12.1508,
+        "finetuned_rouge_l": 0.2314,
+        "finetuned_bertscore": 0.8199,
+        "finetuned_time_s": 60.22
+      }
+    },
+    {
+      "question": "What are the treatments for Knobloch syndrome ?",
+      "reference": "These resources address the diagnosis or management of Knobloch syndrome:  - American Academy of Ophthalmology: Eye Smart  - Genetic Testing Registry: Knobloch syndrome 1  - JAMA Patient Page: Retinal Detachment  - National Eye Institute: Facts About Retinal Detachment  - Prevent Blindness America: Retinal Tears and Detachments   These resources from MedlinePlus offer information about the diagnosis and management of various health conditions:  - Diagnostic Tests  - Drug Therapy  - Surgery and Rehabilitation  - Genetic Counseling   - Palliative Care",
+      "original_answer": "Knobloch syndrome is also known as Ocular Hypertension Syndrome (OHS), which is a condition characterized by elevated intraocular pressure (IOP) in individuals with normal optic nerve heads. However, it's important to note that \"Knobloch syndrome\" does not have a universally accepted specific definition beyond this context.\n\nFor Ocular Hypertension Syndrome, there isn't a specific cure since it can be asymptomatic and may lead to glaucoma if left untreated. Treatment options include:\n\n1. **Regular Monitoring:** Regular eye exams and monitoring of IOP levels.\n   \n2. **Medications:** Eye",
+      "finetuned_answer": "These resources address the diagnosis or management of Knobloch syndrome:  - Gene Review: Gene Review: Knobloch Syndrome 1  - Genetic Testing Registry: Knoblach syndrome type 2   These resources from MedlinePlus offer information about the diagnosis and management of various health conditions:  - Diagnostic Tests  - Drug Therapy  - Surgery and Rehabilitation  - Genetic Counseling   - Palliative Care",
+      "metrics": {
+        "original_bleu": 1.202,
+        "original_rouge_l": 0.1039,
+        "original_bertscore": 0.737,
+        "original_time_s": 43.227,
+        "finetuned_bleu": 53.2728,
+        "finetuned_rouge_l": 0.6838,
+        "finetuned_bertscore": 0.9247,
+        "finetuned_time_s": 45.794
+      }
+    },
+    {
+      "question": "What is (are) Celiac Disease ?",
+      "reference": "Celiac disease is an immune disease in which people can't eat gluten because it will damage their small intestine. If you have celiac disease and eat foods with gluten, your immune system responds by damaging the small intestine. Gluten is a protein found in wheat, rye, and barley. It is found mainly in foods but may also be in other products like medicines, vitamins and supplements, lip balm, and even the glue on stamps and envelopes.    Celiac disease affects each person differently. Symptoms may occur in the digestive system, or in other parts of the body. One person might have diarrhea and abdominal pain, while another person may be irritable or depressed. Irritability is one of the most common symptoms in children. Some people have no symptoms.    Celiac disease is genetic. Blood tests can help your doctor diagnose the disease. Your doctor may also need to examine a small piece of tissue from your small intestine. Treatment is a diet free of gluten.     NIH: National Institute of Diabetes and Digestive and Kidney Diseases",
+      "original_answer": "Celiac disease, also known as celiac sprue or gluten-sensitive enteropathy, is an autoimmune disorder triggered by the ingestion of gluten. Gluten is a protein found in wheat, barley, rye, and some other grains.\n\nWhen individuals with celiac disease eat foods containing gluten, their immune system responds by damaging the small intestine's lining. This damage interferes with the absorption of nutrients from food into the body, which can lead to various symptoms and long-term complications if left untreated.\n\nKey points about celiac disease include:\n\n1. **Autoimmune Disorder**: It causes the immune system to attack the small intestine.\n2. **In",
+      "finetuned_answer": "Celiac disease is an immune system disorder in which the lining of the small intestine becomes damaged because of eating gluten. Gluten is found in wheat, rye, barley, and foods made with these grains.    In people who have celiac disease, gluten causes damage by damaging the villi, tiny finger-like projections along the inside wall of the small intestine. Villi absorb nutrients from food so you can use them for energy. Without villi, you cannot properly absorb vitamins and minerals, and malnutrition develops. Other symptoms include       - Diarrhea    - Weight loss    - Abdominal bloating and pain     - Failure to",
+      "metrics": {
+        "original_bleu": 11.1749,
+        "original_rouge_l": 0.2109,
+        "original_bertscore": 0.8146,
+        "original_time_s": 43.176,
+        "finetuned_bleu": 8.0024,
+        "finetuned_rouge_l": 0.223,
+        "finetuned_bertscore": 0.8326,
+        "finetuned_time_s": 66.213
+      }
+    },
+    {
+      "question": "What is (are) Multifocal motor neuropathy ?",
+      "reference": "Multifocal motor neuropathy (MMN) is a rare neuropathy characterized by progressive, asymmetric muscle weakness and atrophy (wasting). Signs and symptoms include weakness in the hands and lower arms; cramping; involuntary contractions or twitching; and atrophy of affected muscles. MMN is thought to be due to an abnormal immune response, but the underlying cause is not clear. Most people treated with intravenous immune globulin (IVIG) have rapid improvement in weakness, but maintenance IVIG is usually required for sustained improvement.",
+      "original_answer": "Multifocal motor neuropathy (MFMN) is a rare autoimmune disorder characterized by the development of multiple small nerve fibers in different parts of the body. It typically presents with muscle weakness, numbness, tingling sensations, and pain that can be debilitating.\n\nThe condition occurs when the immune system mistakenly attacks the peripheral nerves, leading to inflammation and damage. MFMN usually affects individuals between 20 and 40 years old, although it can occur at any age.\n\nKey points about multifocal motor neuropathy include:\n\n1. **Symptoms**: These may include muscle wasting, weakness, sensory disturbances, and painful cramps",
+      "finetuned_answer": "Multifocal motor neuropathy (MMN) is an autoimmune disorder of the peripheral nervous system characterized by weakness in several limbs caused by antibodies against a specific sodium channel protein on nerve cells. The onset can be gradual or acute with progressive muscle wasting. MMN may occur as a result of an infection such as HIV/AIDS or hepatitis C; other conditions associated with MMN include diabetes mellitus, chronic viral infections (i.e., Epstein-Barr virus), cancer, and rheumatoid arthritis. Diagnosis is confirmed via electromyography and blood tests. Treatment typically includes intravenous immunoglobulin therapy, which has been shown to improve symptoms and",
+      "metrics": {
+        "original_bleu": 6.3428,
+        "original_rouge_l": 0.1988,
+        "original_bertscore": 0.8126,
+        "original_time_s": 44.612,
+        "finetuned_bleu": 8.0454,
+        "finetuned_rouge_l": 0.191,
+        "finetuned_bertscore": 0.8118,
+        "finetuned_time_s": 66.876
+      }
+    },
+    {
+      "question": "Is Chandler's syndrome inherited ?",
+      "reference": "Is Chandler's syndrome inherited? While the cause of Chandler's syndrome is unknown, at this time there is no evidence that it is inherited (hereditary).",
+      "original_answer": "Chandler's syndrome, also known as hereditary motor neuropathy type IV (HMN4), is an autosomal dominant genetic disorder. This means it can be passed down from one parent to their child in each instance with roughly a 50% chance if the other parent does not carry the gene mutation.\n\nHowever, it's important to note that while the condition is indeed inherited, it often presents differently among affected individuals and may have varying degrees of severity. The inheritance pattern suggests that having one copy of the mutated gene will typically result in symptoms related to this syndrome, but the specific details such as onset age and extent of symptoms can",
+      "finetuned_answer": "This condition is considered to have an autosomal dominant pattern of inheritance, which means one copy of the altered gene in each cell is sufficient to cause the disorder. In some cases, an affected person inherits the mutation from one affected parent. Other cases result from new mutations in the gene and occur in people with no history of the disorder in their family.  When Chandler's syndrome affects both eyes, it is typically caused by a new mutation in the gene and occurs in people with no history of the disorder in their family.",
+      "metrics": {
+        "original_bleu": 1.0121,
+        "original_rouge_l": 0.1176,
+        "original_bertscore": 0.7746,
+        "original_time_s": 47.771,
+        "finetuned_bleu": 1.3228,
+        "finetuned_rouge_l": 0.1653,
+        "finetuned_bertscore": 0.7589,
+        "finetuned_time_s": 63.44
+      }
+    },
+    {
+      "question": "Do you have information about Potassium",
+      "reference": "Summary : Potassium is a mineral that the body needs to work normally. It helps nerves and muscles communicate. It also helps move nutrients into cells and waste products out of cells. A diet rich in potassium helps to offset some of sodium's harmful effects on blood pressure.    Most people get all the potassium they need from what they eat and drink. Sources of potassium in the diet include       - Leafy greens, such as spinach and collards    - Fruit from vines, such as grapes and blackberries    - Root vegetables, such as carrots and potatoes    - Citrus fruits, such as oranges and grapefruit",
+      "original_answer": "Certainly! Potassium is an essential mineral and electrolyte that plays a crucial role in the body's functions. Here’s some key information about potassium:\n\n### Functions of Potassium:\n1. **Nerve Function**: Helps transmit signals between nerves and muscles.\n2. **Muscle Function**: Supports normal muscle contraction and relaxation.\n3. **Heart Function**: Maintains a regular heartbeat by regulating electrical impulses in the heart.\n4. **Blood Pressure Regulation**: Helps lower blood pressure by balancing sodium levels.\n\n### Sources of Potassium:\n- **Fruits** (bananas, oranges, apricots)\n- **Vegetables** (",
+      "finetuned_answer": "Summary : Potassium is an important mineral found in many foods. It's also available as a dietary supplement. Potassium plays several roles in the body:       - Keeping muscles relaxed    - Regulating muscle activity of the heart     - Helping nerves send signals    - Controlling fluid balance between cells       Most people get enough potassium from their diet. However, some people may need extra potassium. These include those who eat very little salt (sodium), have certain health problems such as kidney disease, or take certain medicines like diuretics. People on dialysis should talk with their doctor about whether they need more potassium in their diet.",
+      "metrics": {
+        "original_bleu": 2.3804,
+        "original_rouge_l": 0.2346,
+        "original_bertscore": 0.7516,
+        "original_time_s": 45.75,
+        "finetuned_bleu": 5.418,
+        "finetuned_rouge_l": 0.1837,
+        "finetuned_bertscore": 0.8075,
+        "finetuned_time_s": 67.859
+      }
+    },
+    {
+      "question": "What is (are) Prolactinoma ?",
+      "reference": "A prolactinoma is a benign noncancerous tumor of the pituitary gland that produces a hormone called prolactin. Prolactinomas are the most common type of pituitary tumor. Symptoms of prolactinoma are caused by hyperprolactinemia --- too much prolactin in the blood --- or by pressure of the tumor on surrounding tissues.\n                \nProlactin stimulates the breast to produce milk during pregnancy.  After giving birth, a mothers prolactin levels fall unless she breastfeeds her infant. Each time the baby nurses, prolactin levels rise to maintain milk production.",
+      "original_answer": "A prolactinoma is a type of tumor that develops in the pituitary gland, which is located at the base of the brain. This tumor produces excessive amounts of the hormone prolactin. The pituitary gland is often called the \"master gland\" because it regulates many body functions through hormones.\n\nProlactinomas can be classified as either microadenomas (tumors less than 10 mm in diameter) or macroadenomas (tumors larger than 10 mm). Most cases of hyperprolactinemia (high levels of prolactin in the blood) are due to these",
+      "finetuned_answer": "Prolactinomas are tumors of the pituitary gland in which the cells make too much prolactin hormone. The pituitary gland is located at the base of the brain. It produces many different hormones including growth hormone, adrenocorticotropic hormone (ACTH), follicle stimulating hormone (FSH), luteinizing hormone (LH), thyroid-stimulating hormone (TSH), prolactin, oxytocin, antidiuretic hormone (ADH), and melanocyte-stimulating hormone (MSH). In women, prolactin stimulates breast milk production; therefore, an excess of",
+      "metrics": {
+        "original_bleu": 8.8365,
+        "original_rouge_l": 0.253,
+        "original_bertscore": 0.8383,
+        "original_time_s": 42.848,
+        "finetuned_bleu": 5.7678,
+        "finetuned_rouge_l": 0.2368,
+        "finetuned_bertscore": 0.8045,
+        "finetuned_time_s": 73.571
+      }
+    },
+    {
+      "question": "How many people are affected by type A insulin resistance syndrome ?",
+      "reference": "Type A insulin resistance syndrome is estimated to affect about 1 in 100,000 people worldwide. Because females have more health problems associated with the condition, it is diagnosed more often in females than in males.",
+      "original_answer": "Type A Insulin Resistance Syndrome, also known as the Metabolic Syndrome (often referred to as Syndrome X), is a cluster of conditions that increase a person's risk of heart disease, stroke, and diabetes. These include abdominal obesity, high blood pressure, high blood sugar levels, and abnormal cholesterol levels.\n\nThe prevalence of metabolic syndrome varies depending on the population and geographic region, but it is estimated that:\n\n- In the United States, about 34% of adults have metabolic syndrome.\n- Worldwide, estimates suggest that up to 16% of adults may have metabolic syndrome.\n- The percentage can be higher in certain populations; for",
+      "finetuned_answer": "Type A insulin resistance syndrome is one of the most common types of diabetes. It occurs in up to 15 percent of individuals with diabetes worldwide. Type A insulin resistance syndrome also affects more than half of children diagnosed with diabetes.",
+      "metrics": {
+        "original_bleu": 1.2989,
+        "original_rouge_l": 0.1765,
+        "original_bertscore": 0.7782,
+        "original_time_s": 55.523,
+        "finetuned_bleu": 13.7127,
+        "finetuned_rouge_l": 0.2597,
+        "finetuned_bertscore": 0.8466,
+        "finetuned_time_s": 30.24
+      }
+    },
+    {
+      "question": "Is Coats disease inherited ?",
+      "reference": "How is Coats disease inherited? In most cases, Coats disease is not inherited. Eighty to 90% of affected people have no evidence of a genetic predisposition to the condition and no affected family members. Rarely, Coats disease can be inherited as a feature of several different genetic syndromes. For example, Coats disease has been reported in people with Senior-Loken syndrome and is a key symptom of a condition called Coats plus syndrome, which is characterized by Coats disease plus abnormalities of the brain, bones, gastrointestinal system, and other parts of the body. Both of these conditions are inherited in an autosomal recessive manner.",
+      "original_answer": "Coats disease is generally considered to be a non-inherited, sporadic disorder. It typically presents with abnormal blood vessel growth in the retina of one or both eyes, which can lead to vision loss if left untreated.\n\nWhile it does not have an identifiable genetic cause, some studies suggest that there might be a slightly increased risk for family members, particularly if they also have other eye abnormalities. However, this does not mean that Coats disease is hereditary in the strict sense; rather, it often occurs as a spontaneous condition without any known familial predisposition.\n\nIt's important to note that while having a relative with Coats disease increases the",
+      "finetuned_answer": "How is Coats disease inherited? The inheritance pattern of Coats disease is unknown; however, the condition has been reported to affect more than one family member in some cases.",
+      "metrics": {
+        "original_bleu": 3.0151,
+        "original_rouge_l": 0.1682,
+        "original_bertscore": 0.7899,
+        "original_time_s": 53.921,
+        "finetuned_bleu": 1.9537,
+        "finetuned_rouge_l": 0.2105,
+        "finetuned_bertscore": 0.8117,
+        "finetuned_time_s": 20.23
+      }
+    },
+    {
+      "question": "What is (are) Mitochondrial complex II deficiency ?",
+      "reference": "Complex II deficiency is a mitochondrial disease. Mitochondria are specialized compartments in cells that create more than 90% of the energy needed by the body. In mitochondrial diseases, the mitochondria don't work correctly resulting in less energy in the cell, cell injury and cell death. The signs and symptoms of mitochondrial complex II deficiency can vary greatly from severe life-threatening symptoms in infancy to muscle disease beginning in adulthood. Complex II deficiency can be caused by mutations in the SDHA, SDHB, SDHD, or SDHAF1 genes. In many cases the underlying gene mutations cannot be identified. Complex II deficiency is inherited in an autosomal recessive fashion. Complex II deficiency gene mutation carriers may be at an increased risk for certain cancers.",
+      "original_answer": "Mitochondrial Complex II deficiency, also known as Isocitrate Dehydrogenase (IDH) deficiency, is a genetic disorder characterized by an impaired ability to produce energy in cells of the body. This condition occurs due to mutations in genes responsible for the function of Complex II of the mitochondrial electron transport chain.\n\nComplex II, which contains the enzyme isocitrate dehydrogenase (IDH), plays a crucial role in the citric acid cycle (Krebs cycle). The citric acid cycle is a series of chemical reactions occurring in the mitochondria where molecules of pyruvate are oxidized to form carbon",
+      "finetuned_answer": "Mitochondrial complex II deficiency is an inherited disorder that affects the muscles used for movement (skeletal muscle). People with this condition have episodes of extreme tiredness (fatigue), shortness of breath, low blood sugar (hypoglycemia), and exercise intolerance beginning in infancy or early childhood. Most affected individuals also develop a heart condition called cardiomyopathy, which weakens and enlarges the heart muscle (enlargement due to increased fluid content is known as dilatation). This enlargement can lead to irregular heartbeats (arrhythmias) that cause life-threatening problems such as sudden cardiac death.  Some people with",
+      "metrics": {
+        "original_bleu": 4.1549,
+        "original_rouge_l": 0.2056,
+        "original_bertscore": 0.769,
+        "original_time_s": 51.049,
+        "finetuned_bleu": 2.7895,
+        "finetuned_rouge_l": 0.1127,
+        "finetuned_bertscore": 0.7616,
+        "finetuned_time_s": 82.14
+      }
+    },
+    {
+      "question": "What are the treatments for hereditary cerebral amyloid angiopathy ?",
+      "reference": "These resources address the diagnosis or management of hereditary cerebral amyloid angiopathy:  - Genetic Testing Registry: Cerebral amyloid angiopathy, APP-related  - Genetic Testing Registry: Dementia familial British  - Genetic Testing Registry: Dementia, familial Danish  - Genetic Testing Registry: Hereditary cerebral amyloid angiopathy, Icelandic type  - Johns Hopkins Medicine: Intracerebral Hemorrhage  - MedlinePlus Encyclopedia: Cerebral Amyloid Angiopathy   These resources from MedlinePlus offer information about the diagnosis and management of various health conditions:  - Diagnostic Tests  - Drug Therapy  - Surgery and Rehabilitation  - Genetic Counseling   - Palliative Care",
+      "original_answer": "Hereditary Cerebral Amyloid Angiopathy (HCAA) is a rare genetic disorder characterized by the presence of abnormal proteins called beta-amyloids in blood vessel walls throughout the brain. There is currently no cure for HCAA, but there are some approaches that can help manage symptoms and slow disease progression.\n\n### Symptomatic Treatments:\n1. **Medication**:\n   - **Antiepileptic Drugs**: If seizures occur as a result of HCAA, anticonvulsants such as levetiracetam, oxcarbazepine, or valproate may be prescribed.\n   \n2. **",
+      "finetuned_answer": "These resources address the diagnosis or management of hereditary cerebral amyloid angiopathy:  - Gene Review: Gene Review: Hereditary Cerebral Amyloid Angiopathy Overview   These resources from MedlinePlus offer information about the diagnosis and management of various health conditions:  - Diagnostic Tests  - Drug Therapy  - Surgery and Rehabilitation  - Genetic Counseling   - Palliative Care",
+      "metrics": {
+        "original_bleu": 2.2815,
+        "original_rouge_l": 0.12,
+        "original_bertscore": 0.7369,
+        "original_time_s": 43.71,
+        "finetuned_bleu": 39.748,
+        "finetuned_rouge_l": 0.6774,
+        "finetuned_bertscore": 0.9176,
+        "finetuned_time_s": 48.275
+      }
+    },
+    {
+      "question": "What is (are) spastic paraplegia type 2 ?",
+      "reference": "Spastic paraplegia type 2 is part of a group of genetic disorders known as hereditary spastic paraplegias. These disorders are characterized by progressive muscle stiffness (spasticity) and the development of paralysis of the lower limbs (paraplegia). Hereditary spastic paraplegias are divided into two types: pure and complex. The pure types involve the lower limbs. The complex types involve the lower limbs and can also affect the upper limbs to a lesser degree; the structure or functioning of the brain; and the nerves connecting the brain and spinal cord to muscles and sensory cells that detect sensations such as touch, pain, heat, and sound (the peripheral nervous system). Spastic paraplegia type 2 can occur in either the pure or complex form.  People with the pure form of spastic paraplegia type 2 experience spasticity in the lower limbs, usually without any additional features. People with the complex form of spastic paraplegia type 2 have lower limb spasticity and can also experience problems with movement and balance (ataxia); involuntary movements of the eyes (nystagmus); mild intellectual disability; involuntary, rhythmic shaking (tremor); and degeneration (atrophy) of the optic nerves, which carry information from the eyes to the brain. Symptoms usually become apparent between the ages of 1 and 5 years; those affected are typically able to walk and have a normal lifespan.",
+      "original_answer": "Spastic paraplegia type 2 (SP2) is one of the types of hereditary spastic paraplegias (HSP). HSPs are genetic disorders characterized by progressive weakness and stiffness in the legs and feet, often leading to difficulty with balance and coordination.\n\nType 2 SP2 typically presents later than other types, usually during adolescence or early adulthood, and it progresses more slowly compared to some of the other types. The symptoms can include:\n\n- Gradual onset of leg weakness and spasticity\n- Difficulty walking or maintaining balance\n- Muscle atrophy (wasting away of muscle tissue)\n- Reflex",
+      "finetuned_answer": "Spastic paraplegia type 2 is an inherited movement disorder characterized by weakness and stiffness (spasticity) of the legs. The signs and symptoms typically appear during childhood, although they may begin anytime between ages 10 and 45. Affected individuals usually develop muscle stiffness in both legs before age 20; some have problems with balance and coordination (ataxia). Other features include increased muscle tone (hypertonia), abnormal reflexes (hyperreflexia), involuntary movements of the arms and legs (choreoathetosis), and foot deformities such as high arches (pes cavus)",
+      "metrics": {
+        "original_bleu": 1.81,
+        "original_rouge_l": 0.202,
+        "original_bertscore": 0.8127,
+        "original_time_s": 45.337,
+        "finetuned_bleu": 3.2453,
+        "finetuned_rouge_l": 0.186,
+        "finetuned_bertscore": 0.8193,
+        "finetuned_time_s": 84.647
+      }
+    },
+    {
+      "question": "What is (are) Bone Diseases ?",
+      "reference": "Your bones help you move, give you shape and support your body. They are living tissues that rebuild constantly throughout your life. During childhood and your teens, your body adds new bone faster than it removes old bone. After about age 20, you can lose bone faster than you make bone. To have strong bones when you are young, and to prevent bone loss when you are older, you need to get enough calcium, vitamin D, and exercise. You should also avoid smoking and drinking too much alcohol.    Bone diseases can make bones easy to break. Different kinds of bone problems include       - Low bone density and osteoporosis, which make your bones weak and more likely to break     - Osteogenesis imperfecta makes your bones brittle     - Paget's disease of bone makes them weak     - Bones can also develop cancer and infections    -  Other bone diseases, which are caused by poor nutrition, genetics, or problems with the rate of bone growth or rebuilding       NIH: National Institute of Arthritis and Musculoskeletal and Skin Diseases",
+      "original_answer": "Bone diseases encompass a wide range of conditions affecting the bones, which can be broadly categorized into two main groups: inherited bone disorders and acquired bone disorders.\n\n### Inherited Bone Disorders\n\n1. **Rickets and Osteomalacia**\n   - These are conditions caused by a deficiency in vitamin D, calcium, or phosphorus.\n   - They lead to softening and weakening of bones, often resulting in pain, deformity, and fractures.\n\n2. **Osteogenesis Imperfecta**\n   - This genetic disorder results in brittle, fragile bones with an abnormal collagen structure, leading to frequent fractures.\n\n3. **Scoliosis**",
+      "finetuned_answer": "Your bones give your body structure and support. They protect your organs, make blood cells, and store minerals. If you have weak or brittle bones, they may break easily. Some bone problems happen when there's too much bone tissue, such as with osteoporosis. Others result from too little bone tissue, like those seen in metabolic diseases.    Your doctor will use lab tests, imaging studies, and sometimes a biopsy to diagnose many bone disorders. Treatment depends on the type of disorder and how serious it is. Treatments include medicines, surgery, and lifestyle changes.",
+      "metrics": {
+        "original_bleu": 1.7213,
+        "original_rouge_l": 0.1508,
+        "original_bertscore": 0.7562,
+        "original_time_s": 48.8,
+        "finetuned_bleu": 1.183,
+        "finetuned_rouge_l": 0.1992,
+        "finetuned_bertscore": 0.7998,
+        "finetuned_time_s": 64.917
+      }
+    },
+    {
+      "question": "What is (are) Crystal arthropathies ?",
+      "reference": "Crystal arthropathies are a diverse group of bone diseases associated with the deposition of minerals within joints and the soft tissues around the joints. The group includes gout, basic calcium phosphate and calcium pyrophosphate dihydrate deposition diseases, and, in very rare cases, calcium oxalate crystal arthropathy which is a rare cause of arthritis characterized by deposition of calcium oxalate crystals within synovial fluid and typically occurs in patients with underlying primary or secondary hyperoxaluria. These crystals are responsible for different rheumatic syndromes, including acute or chronic synovial inflammation and cartilage degeneration. Treatment depends on the specific condition.",
+      "original_answer": "Crystal arthropathies refer to certain inflammatory conditions of joints caused by the deposition of specific crystals within the joint space. These conditions are also known as crystal-induced arthritis or crystal-associated arthritis. The most common types of crystal arthropathies include:\n\n1. **Gout**: Caused by the deposition of monosodium urate (MSU) crystals in joints and other tissues. Gout can lead to sudden, severe attacks of pain, swelling, warmth, and redness in affected joints.\n\n2. **Calcium Pyrophosphate Dihydrate Crystal-Dependent Arthritis (Pseudogout)**: Also",
+      "finetuned_answer": "Crystal arthropathy describes conditions characterized by the deposition of crystals in the joints or other parts of the body. Most crystal arthropathies involve calcium pyrophosphate dihydrate (CPPD), which is found in cartilage and bone and is associated with age-related changes such as osteoarthritis. Other forms of crystal arthropathy include those caused by uric acid crystals, cholesterol crystals, monosodium urate crystals, cystine crystals, phosphatic crystals, xanthin uric acid crystals, and cryoglobulins. The most common symptom of all crystal arthropathies is joint pain; however, the severity",
+      "metrics": {
+        "original_bleu": 3.5297,
+        "original_rouge_l": 0.2346,
+        "original_bertscore": 0.8163,
+        "original_time_s": 49.676,
+        "finetuned_bleu": 4.428,
+        "finetuned_rouge_l": 0.2198,
+        "finetuned_bertscore": 0.8275,
+        "finetuned_time_s": 107.462
+      }
+    }
+  ],
+  "meta": {
+    "num_examples": 50,
+    "adapter_dir": "C:\\Users\\abdes\\OneDrive\\Documents\\Medical-Chatbot\\medical_chatbot\\outputs\\lora_adapter",
+    "base_model": "unsloth/Qwen2.5-3B-Instruct-bnb-4bit"
+  }
+}

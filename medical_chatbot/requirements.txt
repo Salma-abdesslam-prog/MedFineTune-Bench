@@ -1,0 +1,46 @@
+# ============================================================
+# Medical Chatbot — Python dependencies
+# Install PyTorch CUDA FIRST (before this file):
+#   pip install torch --index-url https://download.pytorch.org/whl/cu121
+# Then:
+#   pip install -r requirements.txt
+# ============================================================
+
+# --- Fine-tuning and models ---
+transformers>=4.45.0
+peft>=0.13.0
+trl>=0.12.0
+accelerate>=0.34.0
+bitsandbytes>=0.43.0
+
+# --- Datasets ---
+datasets>=3.0.0
+huggingface-hub>=0.25.0
+
+# --- NLP Metrics ---
+evaluate>=0.4.3
+rouge-score>=0.1.2
+bert-score>=0.3.13
+nltk>=3.9.0
+sacrebleu>=2.4.3
+
+# --- Interface ---
+gradio>=4.44.0
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+sse-starlette>=2.1.0
+
+# --- Visualization ---
+matplotlib>=3.9.0
+plotly>=5.24.0
+
+# --- Utilities ---
+numpy>=1.26.0
+pandas>=2.2.0
+scipy>=1.13.0
+tqdm>=4.66.0
+sentencepiece>=0.2.0
+protobuf>=4.25.0
+
+# --- Unsloth (Linux/WSL2 only — install separately) ---
+# pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"
