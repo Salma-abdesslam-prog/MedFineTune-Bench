@@ -1,99 +1,26 @@
-# 🏥 Medical Chatbot — Qwen 2.5 3B Fine-tuned with QLoRA
+# 🏥 Medical Chatbot — QLoRA Fine-tuned Qwen 2.5 3B
 
-Complete pipeline: data preparation → fine-tuning → evaluation → comparative Gradio interface.
+End-to-end NLP project: dataset preparation → QLoRA fine-tuning → quantitative evaluation → production web interface comparing the base and fine-tuned models side-by-side.
 
----
+## Results
 
-## Hardware Prerequisites
-
-| Component | Minimum |
-|-----------|---------|
-| GPU | NVIDIA with ≥ 6 GB VRAM (RTX A1000 / RTX 3060 / etc.) |
-| RAM | 16 GB recommended |
-| Storage | ~15 GB free (model + data + adapter) |
-| CUDA | 11.8 or 12.x |
-| Driver | ≥ 525.x — verify with `nvidia-smi` |
+| Metric | Base Model | Fine-tuned | Δ |
+|--------|-----------|------------|---|
+| BLEU-4 | 2.78 | **9.89** | +256% |
+| ROUGE-L | 0.177 | **0.276** | +56% |
+| BERTScore F1 | 0.782 | **0.824** | +5.4% |
+| Perplexity | 5.62 | **4.20** | −25% |
 
 ---
 
-## ⚠️ Unsloth on Windows
+## Stack
 
-Unsloth is **optimized for Linux/WSL2**. Native Windows installation often fails.
-
-### Option A — WSL2 (recommended)
-```powershell
-# In PowerShell (admin)
-wsl --install
-# Then follow Linux instructions inside the WSL2 terminal
-```
-
-### Option B — Native Windows fallback
-If Unsloth fails to install, use `2_finetune_fallback.py` instead of `2_finetune.py`.
-The fallback uses `transformers + peft + bitsandbytes + trl` directly — ~30–40% slower but fully functional.
-
----
-
-## Installation
-
-### 1. Create a virtual environment
-```bash
-python -m venv venv
-
-# Windows
-venv\Scripts\activate
-
-# Linux / WSL2
-source venv/bin/activate
-```
-
-### 2. Install PyTorch with CUDA support
-```bash
-# CUDA 12.1
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-
-# CUDA 11.8 (older driver)
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-```
-
-### 3. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Install Unsloth (WSL2 / Linux only)
-```bash
-pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"
-```
-
-### 5. (Windows native only) Install bitsandbytes wheel
-```bash
-pip install https://github.com/jllllll/bitsandbytes-windows-webui/releases/download/wheels/bitsandbytes-0.41.1-py3-none-win_amd64.whl
-```
-
----
-
-## Execution Order
-
-```
-Step 1:  python 1_prepare_data.py          (~5–10 min, download + processing)
-Step 2a: python 2_finetune.py              (~2–4 h, requires Unsloth)
-  OR
-Step 2b: python 2_finetune_fallback.py     (~3–6 h, Windows-compatible fallback)
-Step 3:  python 3_evaluate.py              (~15–30 min on 100 test examples)
-Step 4:  python 4_app.py                   (starts Gradio server → http://localhost:7860)
-```
-
----
-
-## Time Estimates
-
-| Step | Estimated Duration | Notes |
-|------|--------------------|-------|
-| Data preparation | 5–10 min | Depends on download speed |
-| Fine-tuning (Unsloth) | 2–4 h | 2 epochs, 15k examples, RTX A1000 |
-| Fine-tuning (fallback) | 3–6 h | Without Unsloth optimizations |
-| Evaluation | 15–30 min | 100 test examples |
-| Gradio interface | Immediate | Model loading ~1–2 min |
+- **Model**: [Qwen 2.5 3B Instruct](https://huggingface.co/unsloth/Qwen2.5-3B-Instruct-bnb-4bit) (4-bit NF4 quantized)
+- **Fine-tuning**: QLoRA via PEFT + TRL `SFTTrainer` (r=16, α=16, target all-linear layers)
+- **Dataset**: [MedQuAD](https://huggingface.co/datasets/lavita/MedQuAD) — 10 610 medical Q&A pairs
+- **Backend**: FastAPI + Server-Sent Events (SSE) streaming
+- **Frontend**: Custom web UI — HTML/CSS/JS, no framework dependencies
+- **Metrics**: BLEU-4, ROUGE-L, BERTScore, Perplexity
 
 ---
 
@@ -101,72 +28,83 @@ Step 4:  python 4_app.py                   (starts Gradio server → http://loca
 
 ```
 medical_chatbot/
-├── requirements.txt
-├── README.md
-├── config.py                    # Centralized hyperparameters
-├── 1_prepare_data.py            # Download + format + split
-├── 2_finetune.py                # Fine-tuning with Unsloth
-├── 2_finetune_fallback.py       # Fine-tuning without Unsloth (Windows)
-├── 3_evaluate.py                # Comparative metrics
-├── 4_app.py                     # Gradio interface
-├── data/
-│   ├── train.jsonl
-│   ├── val.jsonl
-│   └── test.jsonl
+├── config.py                 # All hyperparameters in one place
+├── 1_prepare_data.py         # Download MedQuAD, clean, 90/5/5 split
+├── 2_finetune_fallback.py    # QLoRA training (Windows-compatible)
+├── 2_finetune.py             # QLoRA training (Unsloth — Linux/WSL2 only)
+├── 3_evaluate.py             # BLEU / ROUGE-L / BERTScore / Perplexity
+├── api.py                    # FastAPI backend with SSE streaming  ← main entry point
+├── frontend/
+│   └── index.html            # Chat UI (side-by-side comparison, metrics view)
 ├── outputs/
-│   ├── lora_adapter/            # Saved LoRA adapter
-│   └── results.json             # Evaluation results
-└── utils/
-    ├── inference.py             # Model loading and generation
-    └── metrics.py               # NLP metrics computation
+│   ├── lora_adapter/         # adapter_config.json + tokenizer (weights excluded)
+│   └── results.json          # Evaluation results
+├── utils/
+│   ├── inference.py          # Model loading, adapter toggling, generation
+│   └── metrics.py            # NLP metric helpers
+└── requirements.txt
 ```
+
+> **Note**: `adapter_model.safetensors` (115 MB) and training checkpoints are excluded from this repo.
+> The adapter is published on Hugging Face Hub: *(link if you upload it)*
 
 ---
 
-## OOM Troubleshooting
+## Hardware Used
 
-If you get a CUDA Out-of-Memory error during fine-tuning, try these fixes in order:
-
-**1. Reduce `MAX_SEQ_LENGTH` in `config.py`:**
-```python
-MAX_SEQ_LENGTH = 1024  # instead of 2048
-```
-
-**2. Reduce batch size in `config.py`:**
-```python
-BATCH_SIZE = 1
-GRAD_ACCUM_STEPS = 8   # double to compensate
-```
-
-**3. Reduce LoRA rank:**
-```python
-LORA_R = 8  # instead of 16
-```
-
-**4. Clear GPU cache before launching:**
-```python
-import torch; torch.cuda.empty_cache()
-```
-
-**5. Gradient checkpointing** is already enabled by default in the config.
+| | |
+|---|---|
+| GPU | NVIDIA RTX A1000 6 GB Laptop GPU |
+| Training time | ~6 h (2 epochs, 9 549 examples, batch size 1 + grad accum 8) |
+| Inference | ~40–60 s/query (4-bit quantized, CPU tokenizer) |
 
 ---
 
-## Hugging Face Authentication
+## Quick Start
 
-Some datasets may require a token:
+### 1. Install dependencies
 ```bash
-huggingface-cli login
+# PyTorch with CUDA first
+pip install torch --index-url https://download.pytorch.org/whl/cu121
+
+pip install -r requirements.txt
 ```
+
+### 2. Run the pipeline
+```bash
+python 1_prepare_data.py       # Download + split dataset (~5 min)
+python 2_finetune_fallback.py  # Train QLoRA adapter (~4–6 h on 6 GB GPU)
+python 3_evaluate.py           # Evaluate on 50 test examples (~30 min)
+python api.py                  # Start web UI → http://localhost:8000
+```
+
+> **Windows users**: use `2_finetune_fallback.py`.  
+> **Linux / WSL2**: install Unsloth first and use `2_finetune.py` for ~30% faster training.
+>
+> `4_app.py` is an older Gradio prototype — use `api.py` for the full interface.
 
 ---
 
-## Accessing the Interface
+## Key Design Decisions
 
-After running `python 4_app.py`, open: [http://localhost:7860](http://localhost:7860)
+**Single model load, adapter toggling**: both "Original" and "Fine-tuned" inference use the same loaded weights. The LoRA adapter is toggled on/off with `model.disable_adapter()`, saving ~2 GB VRAM vs loading two separate models.
+
+**No mid-training evaluation**: disabling `eval_strategy` during fine-tuning prevents VRAM fragmentation between epochs — a common cause of slowdowns on 6 GB cards.
+
+**Reduced sequence length**: analysis of the dataset showed 99th-percentile token length of 493. Setting `max_length=512` instead of 2048 reduced VRAM usage by ~4× with no quality impact.
+
+---
+
+## Interface
+
+The web UI (`api.py` + `frontend/index.html`) features:
+- Side-by-side **Compare mode** — both models answer the same question simultaneously
+- **Metrics dashboard** — Chart.js bar chart + per-example BERTScore breakdown
+- SSE streaming — typing indicator while the model generates
+- No framework dependencies — pure HTML/CSS/JS
 
 ---
 
 ## Disclaimer
 
-> ⚠️ This project is for **educational and research purposes only**. Model responses do not constitute professional medical advice and must not replace consultation with a qualified healthcare professional.
+> ⚠️ For **educational and research purposes only**. Model outputs do not constitute medical advice. Always consult a qualified healthcare professional.
