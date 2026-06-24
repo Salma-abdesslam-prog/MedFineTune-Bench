@@ -4,19 +4,22 @@
 Outputs:
     outputs/results.json  — structured metrics + per-example data
 
-Metrics computed:
-  - BLEU-4, ROUGE-L, BERTScore F1 (vs reference answer)
-  - Average generation time (seconds)
-  - Average perplexity on the test set
+Metrics:
+  - Cosine semantic similarity  (biomedical sentence embeddings, 0–1)
+  - Medical Accuracy Score      (LLM-as-a-Judge, 0–10)
+  - Clinical Safety Score       (LLM-as-a-Judge, 0–10)
+  - Completeness Score          (LLM-as-a-Judge, 0–10)
+  - Hallucination Rate          (claim-level classification, 0–1)
+
+LLM judge (optional): set JUDGE_API_KEY or OPENAI_API_KEY environment variable.
+  Without a key, LLM-judge metrics fall back to heuristic approximations.
 """
 
 import json
 import os
 import sys
-import time
 
 import numpy as np
-import torch
 from tqdm import tqdm
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -26,18 +29,23 @@ from config import (
     MAX_EVAL_EXAMPLES,
     OUTPUTS_DIR,
     RESULTS_FILE,
-    SEED,
-    SYSTEM_PROMPT,
     TEST_FILE,
 )
 from utils.inference import load_models
-from utils.metrics import compute_bertscore, compute_bleu, compute_perplexity, compute_rouge_l
+from utils.metrics import (
+    compute_semantic_similarity_batch,
+    compute_medical_accuracy,
+    compute_clinical_safety,
+    compute_completeness,
+    compute_hallucination_rate,
+)
 
-# Override max_new_tokens for eval — 128 tokens is enough for BLEU/ROUGE/BERTScore
-# and makes evaluation 4x faster than the default 512
 import utils.inference as _inf_module
 import config as _cfg
-_EVAL_MAX_NEW_TOKENS = 128
+
+# Longer than the old 128 — responses need enough content for claim extraction
+_EVAL_MAX_NEW_TOKENS = 256
+
 
 # ── Helpers ───────────────────────────────────────────────────
 
@@ -60,75 +68,74 @@ def safe_mean(lst: list) -> float:
 def main():
     print("\n=== Step 3: Evaluation ===\n")
 
-    # Ensure output directory exists
     os.makedirs(OUTPUTS_DIR, exist_ok=True)
 
     # 1. Load test set
     test_data = load_jsonl(TEST_FILE)
     if len(test_data) > MAX_EVAL_EXAMPLES:
-        # Use a fixed slice for reproducibility
         test_data = test_data[:MAX_EVAL_EXAMPLES]
     print(f"[INFO] Evaluating on {len(test_data)} test examples.")
 
-    # 2. Load models — temporarily lower max_new_tokens for faster eval
-    _cfg.MAX_NEW_TOKENS = _EVAL_MAX_NEW_TOKENS
+    # 2. Load models
+    _cfg.MAX_NEW_TOKENS        = _EVAL_MAX_NEW_TOKENS
     _inf_module.MAX_NEW_TOKENS = _EVAL_MAX_NEW_TOKENS
     print(f"\n[INFO] Loading models (eval max_new_tokens={_EVAL_MAX_NEW_TOKENS})...")
     generate_original, generate_finetuned = load_models()
 
-    # 3. Per-example generation and metric collection
-    questions        = []
-    references       = []
-    original_answers = []
-    finetuned_answers= []
-
-    orig_bleu   = []; orig_rouge  = []; orig_times  = []
-    ft_bleu     = []; ft_rouge    = []; ft_times    = []
+    # 3. Generate responses from both models
+    questions         = []
+    references        = []
+    original_answers  = []
+    finetuned_answers = []
+    orig_times        = []
+    ft_times          = []
 
     print("\n[INFO] Generating responses...\n")
-    for item in tqdm(test_data, desc="Evaluating"):
+    for item in tqdm(test_data, desc="Generating"):
         question  = item["instruction"]
         reference = item["output"]
 
-        # Generate from both models
         orig_resp, orig_t = generate_original(question)
         ft_resp,   ft_t   = generate_finetuned(question)
-
-        # Per-sample metrics
-        orig_bleu.append(compute_bleu(orig_resp, reference))
-        orig_rouge.append(compute_rouge_l(orig_resp, reference))
-        orig_times.append(orig_t)
-
-        ft_bleu.append(compute_bleu(ft_resp, reference))
-        ft_rouge.append(compute_rouge_l(ft_resp, reference))
-        ft_times.append(ft_t)
 
         questions.append(question)
         references.append(reference)
         original_answers.append(orig_resp)
         finetuned_answers.append(ft_resp)
+        orig_times.append(orig_t)
+        ft_times.append(ft_t)
 
-    # 4. BERTScore (batched — more efficient)
-    print("\n[INFO] Computing BERTScore (this takes a few minutes)...")
-    orig_bert = compute_bertscore(original_answers, references)
-    ft_bert   = compute_bertscore(finetuned_answers, references)
+    # 4. Semantic similarity (batched for efficiency)
+    print("\n[INFO] Computing semantic similarity (biomedical embeddings)...")
+    orig_cosine = compute_semantic_similarity_batch(original_answers, references)
+    ft_cosine   = compute_semantic_similarity_batch(finetuned_answers, references)
 
-    # 5. Perplexity — reuse the already-loaded model to avoid double VRAM usage
-    print("[INFO] Computing perplexity (reusing loaded model)...")
-    import utils.inference as _inf
-    _tokenizer = _inf._tokenizer
-    _model_ref  = _inf._model
+    # 5. LLM-as-a-Judge metrics (per example)
+    print("\n[INFO] Computing LLM-as-a-Judge metrics...")
+    orig_accuracy      = []
+    orig_safety        = []
+    orig_completeness  = []
+    orig_hallucination = []
+    ft_accuracy        = []
+    ft_safety          = []
+    ft_completeness    = []
+    ft_hallucination   = []
 
-    # Base model: disable the LoRA adapter
-    if _inf._is_peft:
-        with _model_ref.disable_adapter():
-            orig_ppl = compute_perplexity(_model_ref, _tokenizer, references[:20])
-    else:
-        orig_ppl = compute_perplexity(_model_ref, _tokenizer, references[:20])
+    for i in tqdm(range(len(questions)), desc="LLM judging"):
+        q = questions[i]
+        r = references[i]
+        o = original_answers[i]
+        f = finetuned_answers[i]
 
-    # Fine-tuned model: adapter enabled (default state)
-    ft_ppl = compute_perplexity(_model_ref, _tokenizer, references[:20])
-    torch.cuda.empty_cache()
+        orig_accuracy.append(compute_medical_accuracy(q, o, r))
+        orig_safety.append(compute_clinical_safety(q, o, r))
+        orig_completeness.append(compute_completeness(q, o, r))
+        orig_hallucination.append(compute_hallucination_rate(o, r))
+
+        ft_accuracy.append(compute_medical_accuracy(q, f, r))
+        ft_safety.append(compute_clinical_safety(q, f, r))
+        ft_completeness.append(compute_completeness(q, f, r))
+        ft_hallucination.append(compute_hallucination_rate(f, r))
 
     # 6. Build results structure
     examples = []
@@ -139,31 +146,41 @@ def main():
             "original_answer":  original_answers[i],
             "finetuned_answer": finetuned_answers[i],
             "metrics": {
-                "original_bleu":        orig_bleu[i],
-                "original_rouge_l":     orig_rouge[i],
-                "original_bertscore":   orig_bert[i],
-                "original_time_s":      round(orig_times[i], 3),
-                "finetuned_bleu":       ft_bleu[i],
-                "finetuned_rouge_l":    ft_rouge[i],
-                "finetuned_bertscore":  ft_bert[i],
-                "finetuned_time_s":     round(ft_times[i], 3),
+                "original": {
+                    "cosine_similarity":  orig_cosine[i],
+                    "medical_accuracy":   orig_accuracy[i],
+                    "clinical_safety":    orig_safety[i],
+                    "completeness":       orig_completeness[i],
+                    "hallucination_rate": orig_hallucination[i],
+                    "time_s":             round(orig_times[i], 3),
+                },
+                "finetuned": {
+                    "cosine_similarity":  ft_cosine[i],
+                    "medical_accuracy":   ft_accuracy[i],
+                    "clinical_safety":    ft_safety[i],
+                    "completeness":       ft_completeness[i],
+                    "hallucination_rate": ft_hallucination[i],
+                    "time_s":             round(ft_times[i], 3),
+                },
             },
         })
 
     results = {
         "original": {
-            "bleu":         safe_mean(orig_bleu),
-            "rouge_l":      safe_mean(orig_rouge),
-            "bertscore_f1": safe_mean(orig_bert),
-            "perplexity":   orig_ppl,
-            "avg_time_s":   safe_mean(orig_times),
+            "cosine_similarity":  safe_mean(orig_cosine),
+            "medical_accuracy":   safe_mean(orig_accuracy),
+            "clinical_safety":    safe_mean(orig_safety),
+            "completeness":       safe_mean(orig_completeness),
+            "hallucination_rate": safe_mean(orig_hallucination),
+            "avg_time_s":         safe_mean(orig_times),
         },
         "finetuned": {
-            "bleu":         safe_mean(ft_bleu),
-            "rouge_l":      safe_mean(ft_rouge),
-            "bertscore_f1": safe_mean(ft_bert),
-            "perplexity":   ft_ppl,
-            "avg_time_s":   safe_mean(ft_times),
+            "cosine_similarity":  safe_mean(ft_cosine),
+            "medical_accuracy":   safe_mean(ft_accuracy),
+            "clinical_safety":    safe_mean(ft_safety),
+            "completeness":       safe_mean(ft_completeness),
+            "hallucination_rate": safe_mean(ft_hallucination),
+            "avg_time_s":         safe_mean(ft_times),
         },
         "examples": examples,
         "meta": {
@@ -178,21 +195,31 @@ def main():
         json.dump(results, f, indent=2, ensure_ascii=False)
     print(f"\n[SAVED] {RESULTS_FILE}")
 
-    # 8. Print summary
-    print("\n" + "=" * 55)
+    # 8. Print summary table
+    _HIGHER_IS_BETTER = {"cosine_similarity", "medical_accuracy", "clinical_safety", "completeness"}
+    _LOWER_IS_BETTER  = {"hallucination_rate"}
+
+    print("\n" + "=" * 62)
     print("  EVALUATION RESULTS")
-    print("=" * 55)
-    print(f"  {'Metric':<20} {'Original':>10} {'Fine-tuned':>10}")
-    print("-" * 55)
-    for key in ["bleu", "rouge_l", "bertscore_f1", "perplexity", "avg_time_s"]:
+    print("=" * 62)
+    print(f"  {'Metric':<25} {'Original':>10} {'Fine-tuned':>10}")
+    print("-" * 62)
+    for key in [
+        "cosine_similarity", "medical_accuracy", "clinical_safety",
+        "completeness", "hallucination_rate", "avg_time_s",
+    ]:
         o = results["original"][key]
         f = results["finetuned"][key]
-        marker = "  <<" if (
-            (key != "perplexity" and key != "avg_time_s" and f > o) or
-            (key == "perplexity" and f < o)
-        ) else ""
-        print(f"  {key:<20} {str(o):>10} {str(f):>10}{marker}")
-    print("=" * 55)
+        if key in _HIGHER_IS_BETTER:
+            marker = "  <<" if f > o else ""
+        elif key in _LOWER_IS_BETTER:
+            marker = "  <<" if f < o else ""
+        else:
+            marker = ""
+        print(f"  {key:<25} {str(o):>10} {str(f):>10}{marker}")
+    print("=" * 62)
+    print("\n  Note: << marks improvement in the fine-tuned model.")
+    print("        hallucination_rate: lower is better.")
     print("\n[DONE] Evaluation complete.\n")
     print("  Next step: python 4_app.py\n")
 

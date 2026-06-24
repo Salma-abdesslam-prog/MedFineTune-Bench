@@ -72,11 +72,12 @@ def build_metrics_table(results: dict) -> str:
     ft   = results["finetuned"]
 
     metric_labels = {
-        "bleu":         ("BLEU-4 ↑",       True),    # higher is better
-        "rouge_l":      ("ROUGE-L ↑",      True),
-        "bertscore_f1": ("BERTScore F1 ↑", True),
-        "perplexity":   ("Perplexity ↓",   False),   # lower is better
-        "avg_time_s":   ("Avg Time (s) ↓", False),
+        "cosine_similarity":  ("Cosine Similarity ↑",  True),
+        "medical_accuracy":   ("Medical Accuracy ↑",   True),
+        "clinical_safety":    ("Clinical Safety ↑",    True),
+        "completeness":       ("Completeness ↑",        True),
+        "hallucination_rate": ("Hallucination Rate ↓",  False),
+        "avg_time_s":         ("Avg Time (s) ↓",        False),
     }
 
     rows = ""
@@ -121,13 +122,23 @@ def build_metrics_table(results: dict) -> str:
 
 
 def build_bar_chart(results: dict):
-    """Return a matplotlib Figure comparing BLEU, ROUGE-L, BERTScore."""
+    """Return a matplotlib Figure comparing medical evaluation metrics (all normalised to 0–1)."""
     orig = results["original"]
     ft   = results["finetuned"]
 
-    metrics = ["BLEU-4", "ROUGE-L", "BERTScore F1"]
-    orig_vals = [orig["bleu"] / 100, orig["rouge_l"], orig["bertscore_f1"]]  # normalise BLEU
-    ft_vals   = [ft["bleu"]   / 100, ft["rouge_l"],   ft["bertscore_f1"]]
+    metrics = ["Cosine\nSimilarity", "Medical\nAccuracy", "Clinical\nSafety", "Completeness"]
+    orig_vals = [
+        orig.get("cosine_similarity", 0),
+        orig.get("medical_accuracy",  0) / 10,
+        orig.get("clinical_safety",   0) / 10,
+        orig.get("completeness",      0) / 10,
+    ]
+    ft_vals = [
+        ft.get("cosine_similarity", 0),
+        ft.get("medical_accuracy",  0) / 10,
+        ft.get("clinical_safety",   0) / 10,
+        ft.get("completeness",      0) / 10,
+    ]
 
     x = np.arange(len(metrics))
     w = 0.35
@@ -136,8 +147,8 @@ def build_bar_chart(results: dict):
     bars1 = ax.bar(x - w / 2, orig_vals, w, label="Original",   color="#4C72B0", alpha=0.85)
     bars2 = ax.bar(x + w / 2, ft_vals,   w, label="Fine-tuned", color="#DD8452", alpha=0.85)
 
-    ax.set_ylabel("Score (0–1)")
-    ax.set_title("Original vs Fine-tuned Model — NLP Metrics")
+    ax.set_ylabel("Score (0–1, normalised)")
+    ax.set_title("Original vs Fine-tuned — Medical Evaluation Metrics")
     ax.set_xticks(x)
     ax.set_xticklabels(metrics)
     ax.set_ylim(0, 1.0)
@@ -149,29 +160,32 @@ def build_bar_chart(results: dict):
 
 
 def build_examples_html(results: dict, n: int = 5) -> str:
-    """Select the n examples with the largest BERTScore difference."""
+    """Select the n examples with the largest cosine similarity difference."""
     examples = results.get("examples", [])
     if not examples:
         return "<p>No examples available.</p>"
 
-    # Sort by absolute BERTScore difference (descending)
     def score_diff(ex):
         m = ex.get("metrics", {})
-        return abs(m.get("finetuned_bertscore", 0) - m.get("original_bertscore", 0))
+        ft_cos   = m.get("finetuned", {}).get("cosine_similarity", 0)
+        orig_cos = m.get("original",  {}).get("cosine_similarity", 0)
+        return abs(ft_cos - orig_cos)
 
     top = sorted(examples, key=score_diff, reverse=True)[:n]
 
     html = ""
     for i, ex in enumerate(top, 1):
-        m = ex.get("metrics", {})
-        diff = m.get("finetuned_bertscore", 0) - m.get("original_bertscore", 0)
+        m    = ex.get("metrics", {})
+        orig = m.get("original",  {})
+        ft   = m.get("finetuned", {})
+        diff = ft.get("cosine_similarity", 0) - orig.get("cosine_similarity", 0)
         direction = "🟢 Fine-tuned better" if diff > 0 else "🔴 Original better"
 
         html += f"""
         <details style="margin-bottom:12px;border:1px solid #ddd;border-radius:6px;padding:8px">
           <summary style="font-weight:bold;cursor:pointer">
             Example {i} — {direction}
-            (BERTScore Δ = {diff:+.3f})
+            (Cosine Similarity Δ = {diff:+.3f})
           </summary>
           <p><strong>Question:</strong> {ex['question']}</p>
           <p><strong>Reference:</strong> {ex['reference'][:300]}{'...' if len(ex['reference']) > 300 else ''}</p>
@@ -179,12 +193,12 @@ def build_examples_html(results: dict, n: int = 5) -> str:
             <div style="background:#f5f5ff;padding:8px;border-radius:4px">
               <strong>Original</strong>
               <p style="font-size:13px">{ex['original_answer'][:300]}{'...' if len(ex['original_answer']) > 300 else ''}</p>
-              <small>BLEU: {m.get('original_bleu', 0):.2f} | ROUGE-L: {m.get('original_rouge_l', 0):.3f} | BERTScore: {m.get('original_bertscore', 0):.3f}</small>
+              <small>Cosine: {orig.get('cosine_similarity', 0):.3f} | Accuracy: {orig.get('medical_accuracy', 0):.1f} | Safety: {orig.get('clinical_safety', 0):.1f} | Hall.: {orig.get('hallucination_rate', 0):.3f}</small>
             </div>
             <div style="background:#f5fff5;padding:8px;border-radius:4px">
               <strong>Fine-tuned</strong>
               <p style="font-size:13px">{ex['finetuned_answer'][:300]}{'...' if len(ex['finetuned_answer']) > 300 else ''}</p>
-              <small>BLEU: {m.get('finetuned_bleu', 0):.2f} | ROUGE-L: {m.get('finetuned_rouge_l', 0):.3f} | BERTScore: {m.get('finetuned_bertscore', 0):.3f}</small>
+              <small>Cosine: {ft.get('cosine_similarity', 0):.3f} | Accuracy: {ft.get('medical_accuracy', 0):.1f} | Safety: {ft.get('clinical_safety', 0):.1f} | Hall.: {ft.get('hallucination_rate', 0):.3f}</small>
             </div>
           </div>
         </details>
@@ -303,18 +317,18 @@ def create_interface() -> gr.Blocks:
                 gr.Markdown("### 📈 Visual Comparison")
                 gr.Plot(value=build_bar_chart(results))
 
-                # Perplexity note
-                orig_ppl = results["original"].get("perplexity") or 0.0
-                ft_ppl   = results["finetuned"].get("perplexity") or 0.0
-                better   = "Fine-tuned" if ft_ppl < orig_ppl else "Original"
+                # Hallucination rate note
+                orig_hr = results["original"].get("hallucination_rate") or 0.0
+                ft_hr   = results["finetuned"].get("hallucination_rate") or 0.0
+                better  = "Fine-tuned" if ft_hr < orig_hr else "Original"
                 gr.Markdown(
-                    f"**Perplexity** — Original: `{orig_ppl:.2f}` | "
-                    f"Fine-tuned: `{ft_ppl:.2f}` | "
+                    f"**Hallucination Rate** — Original: `{orig_hr:.3f}` | "
+                    f"Fine-tuned: `{ft_hr:.3f}` | "
                     f"Better: **{better}** (lower = better)"
                 )
 
                 # Notable examples
-                gr.Markdown("### 🔍 Notable Examples (largest BERTScore difference)")
+                gr.Markdown("### 🔍 Notable Examples (largest cosine similarity difference)")
                 gr.HTML(build_examples_html(results, n=5))
 
     return demo

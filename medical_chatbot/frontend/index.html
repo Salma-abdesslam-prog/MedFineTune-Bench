@@ -605,14 +605,14 @@
       </div>
 
       <div class="chart-card" style="margin-top:20px">
-        <div class="chart-card-title">NLP Metrics Comparison</div>
+        <div class="chart-card-title">Medical Evaluation Metrics (normalised to 0–1)</div>
         <div class="chart-wrapper">
           <canvas id="metrics-chart"></canvas>
         </div>
       </div>
 
       <div class="examples-card" style="margin-top:20px">
-        <div class="examples-title">🔍 Notable Examples — Largest BERTScore difference</div>
+        <div class="examples-title">🔍 Notable Examples — Largest cosine similarity difference</div>
         <div id="examples-list"><!-- filled by JS --></div>
       </div>
     </div>
@@ -974,10 +974,11 @@ function renderMetrics(data) {
 
   // Stat cards
   const metrics = [
-    { key: 'bleu',         label: 'BLEU-4',       icon: '📝', higher: true,  fmt: v => v.toFixed(2) },
-    { key: 'rouge_l',      label: 'ROUGE-L',       icon: '📄', higher: true,  fmt: v => v.toFixed(3) },
-    { key: 'bertscore_f1', label: 'BERTScore F1',  icon: '🧠', higher: true,  fmt: v => v.toFixed(3) },
-    { key: 'perplexity',   label: 'Perplexity',    icon: '🎯', higher: false, fmt: v => v.toFixed(2) },
+    { key: 'cosine_similarity',  label: 'Cosine Similarity', icon: '🔗', higher: true,  fmt: v => v.toFixed(3) },
+    { key: 'medical_accuracy',   label: 'Medical Accuracy',  icon: '🩺', higher: true,  fmt: v => v.toFixed(1) },
+    { key: 'clinical_safety',    label: 'Clinical Safety',   icon: '🛡️', higher: true,  fmt: v => v.toFixed(1) },
+    { key: 'completeness',       label: 'Completeness',      icon: '📋', higher: true,  fmt: v => v.toFixed(1) },
+    { key: 'hallucination_rate', label: 'Hallucination Rate',icon: '⚠️', higher: false, fmt: v => v.toFixed(3) },
   ];
 
   const cards = document.getElementById('stat-cards');
@@ -1005,17 +1006,27 @@ function renderMetrics(data) {
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['BLEU-4', 'ROUGE-L', 'BERTScore F1'],
+      labels: ['Cosine\nSimilarity', 'Medical\nAccuracy', 'Clinical\nSafety', 'Completeness'],
       datasets: [
         {
           label: 'Original',
-          data: [(orig.bleu || 0) / 100, orig.rouge_l || 0, orig.bertscore_f1 || 0],
+          data: [
+            orig.cosine_similarity || 0,
+            (orig.medical_accuracy  || 0) / 10,
+            (orig.clinical_safety   || 0) / 10,
+            (orig.completeness      || 0) / 10,
+          ],
           backgroundColor: 'rgba(99,102,241,.75)',
           borderColor: '#6366f1', borderWidth: 1.5, borderRadius: 6,
         },
         {
           label: 'Fine-tuned',
-          data: [(ft.bleu || 0) / 100, ft.rouge_l || 0, ft.bertscore_f1 || 0],
+          data: [
+            ft.cosine_similarity || 0,
+            (ft.medical_accuracy  || 0) / 10,
+            (ft.clinical_safety   || 0) / 10,
+            (ft.completeness      || 0) / 10,
+          ],
           backgroundColor: 'rgba(14,165,233,.75)',
           borderColor: '#0ea5e9', borderWidth: 1.5, borderRadius: 6,
         },
@@ -1040,15 +1051,17 @@ function renderMetrics(data) {
 
   const sorted = [...examples]
     .sort((a, b) => {
-      const da = Math.abs((b.metrics?.finetuned_bertscore || 0) - (b.metrics?.original_bertscore || 0));
-      const db = Math.abs((a.metrics?.finetuned_bertscore || 0) - (a.metrics?.original_bertscore || 0));
+      const da = Math.abs((b.metrics?.finetuned?.cosine_similarity || 0) - (b.metrics?.original?.cosine_similarity || 0));
+      const db = Math.abs((a.metrics?.finetuned?.cosine_similarity || 0) - (a.metrics?.original?.cosine_similarity || 0));
       return da - db;
     })
     .slice(0, 5);
 
   document.getElementById('examples-list').innerHTML = sorted.map((ex, i) => {
     const m    = ex.metrics || {};
-    const diff = (m.finetuned_bertscore || 0) - (m.original_bertscore || 0);
+    const mo   = m.original  || {};
+    const mf   = m.finetuned || {};
+    const diff = (mf.cosine_similarity || 0) - (mo.cosine_similarity || 0);
     const better = diff > 0;
     const bodyId = 'ex-body-' + i;
     return `
@@ -1059,7 +1072,7 @@ function renderMetrics(data) {
             <span class="example-q">${esc((ex.question || '').slice(0, 80))}${(ex.question||'').length>80?'…':''}</span>
           </div>
           <div style="display:flex;align-items:center;gap:10px">
-            <span class="example-delta">Δ ${diff >= 0 ? '+' : ''}${diff.toFixed(3)}</span>
+            <span class="example-delta">Cosine Δ ${diff >= 0 ? '+' : ''}${diff.toFixed(3)}</span>
             <span class="example-chevron">›</span>
           </div>
         </div>
@@ -1070,18 +1083,20 @@ function renderMetrics(data) {
               <div class="example-col-head">📦 Original</div>
               <div class="example-col-text">${esc((ex.original_answer||'').slice(0,250))}${(ex.original_answer||'').length>250?'…':''}</div>
               <div class="example-col-scores">
-                <span class="score-chip">BLEU: ${(m.original_bleu||0).toFixed(1)}</span>
-                <span class="score-chip">ROUGE: ${(m.original_rouge_l||0).toFixed(3)}</span>
-                <span class="score-chip">BERT: ${(m.original_bertscore||0).toFixed(3)}</span>
+                <span class="score-chip">Cosine: ${(mo.cosine_similarity||0).toFixed(3)}</span>
+                <span class="score-chip">Accuracy: ${(mo.medical_accuracy||0).toFixed(1)}</span>
+                <span class="score-chip">Safety: ${(mo.clinical_safety||0).toFixed(1)}</span>
+                <span class="score-chip">Hall.: ${(mo.hallucination_rate||0).toFixed(3)}</span>
               </div>
             </div>
             <div class="example-col ft-col">
               <div class="example-col-head">🎯 Fine-tuned</div>
               <div class="example-col-text">${esc((ex.finetuned_answer||'').slice(0,250))}${(ex.finetuned_answer||'').length>250?'…':''}</div>
               <div class="example-col-scores">
-                <span class="score-chip">BLEU: ${(m.finetuned_bleu||0).toFixed(1)}</span>
-                <span class="score-chip">ROUGE: ${(m.finetuned_rouge_l||0).toFixed(3)}</span>
-                <span class="score-chip">BERT: ${(m.finetuned_bertscore||0).toFixed(3)}</span>
+                <span class="score-chip">Cosine: ${(mf.cosine_similarity||0).toFixed(3)}</span>
+                <span class="score-chip">Accuracy: ${(mf.medical_accuracy||0).toFixed(1)}</span>
+                <span class="score-chip">Safety: ${(mf.clinical_safety||0).toFixed(1)}</span>
+                <span class="score-chip">Hall.: ${(mf.hallucination_rate||0).toFixed(3)}</span>
               </div>
             </div>
           </div>
