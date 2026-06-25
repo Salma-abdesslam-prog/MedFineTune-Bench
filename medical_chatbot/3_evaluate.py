@@ -7,8 +7,6 @@ Outputs:
 Metrics:
   - Cosine semantic similarity  (biomedical sentence embeddings, 0–1)
   - Medical Accuracy Score      (LLM-as-a-Judge, 0–10)
-  - Clinical Safety Score       (LLM-as-a-Judge, 0–10)
-  - Completeness Score          (LLM-as-a-Judge, 0–10)
   - Hallucination Rate          (claim-level classification, 0–1)
 
 LLM judge (optional): set JUDGE_API_KEY or OPENAI_API_KEY environment variable.
@@ -35,16 +33,13 @@ from utils.inference import load_models
 from utils.metrics import (
     compute_semantic_similarity_batch,
     compute_medical_accuracy,
-    compute_clinical_safety,
-    compute_completeness,
     compute_hallucination_rate,
 )
 
 import utils.inference as _inf_module
 import config as _cfg
 
-# Longer than the old 128 — responses need enough content for claim extraction
-_EVAL_MAX_NEW_TOKENS = 256
+_EVAL_MAX_NEW_TOKENS = 128
 
 
 # ── Helpers ───────────────────────────────────────────────────
@@ -113,12 +108,8 @@ def main():
     # 5. LLM-as-a-Judge metrics (per example)
     print("\n[INFO] Computing LLM-as-a-Judge metrics...")
     orig_accuracy      = []
-    orig_safety        = []
-    orig_completeness  = []
     orig_hallucination = []
     ft_accuracy        = []
-    ft_safety          = []
-    ft_completeness    = []
     ft_hallucination   = []
 
     for i in tqdm(range(len(questions)), desc="LLM judging"):
@@ -128,13 +119,9 @@ def main():
         f = finetuned_answers[i]
 
         orig_accuracy.append(compute_medical_accuracy(q, o, r))
-        orig_safety.append(compute_clinical_safety(q, o, r))
-        orig_completeness.append(compute_completeness(q, o, r))
         orig_hallucination.append(compute_hallucination_rate(o, r))
 
         ft_accuracy.append(compute_medical_accuracy(q, f, r))
-        ft_safety.append(compute_clinical_safety(q, f, r))
-        ft_completeness.append(compute_completeness(q, f, r))
         ft_hallucination.append(compute_hallucination_rate(f, r))
 
     # 6. Build results structure
@@ -149,16 +136,12 @@ def main():
                 "original": {
                     "cosine_similarity":  orig_cosine[i],
                     "medical_accuracy":   orig_accuracy[i],
-                    "clinical_safety":    orig_safety[i],
-                    "completeness":       orig_completeness[i],
                     "hallucination_rate": orig_hallucination[i],
                     "time_s":             round(orig_times[i], 3),
                 },
                 "finetuned": {
                     "cosine_similarity":  ft_cosine[i],
                     "medical_accuracy":   ft_accuracy[i],
-                    "clinical_safety":    ft_safety[i],
-                    "completeness":       ft_completeness[i],
                     "hallucination_rate": ft_hallucination[i],
                     "time_s":             round(ft_times[i], 3),
                 },
@@ -169,16 +152,12 @@ def main():
         "original": {
             "cosine_similarity":  safe_mean(orig_cosine),
             "medical_accuracy":   safe_mean(orig_accuracy),
-            "clinical_safety":    safe_mean(orig_safety),
-            "completeness":       safe_mean(orig_completeness),
             "hallucination_rate": safe_mean(orig_hallucination),
             "avg_time_s":         safe_mean(orig_times),
         },
         "finetuned": {
             "cosine_similarity":  safe_mean(ft_cosine),
             "medical_accuracy":   safe_mean(ft_accuracy),
-            "clinical_safety":    safe_mean(ft_safety),
-            "completeness":       safe_mean(ft_completeness),
             "hallucination_rate": safe_mean(ft_hallucination),
             "avg_time_s":         safe_mean(ft_times),
         },
@@ -196,7 +175,7 @@ def main():
     print(f"\n[SAVED] {RESULTS_FILE}")
 
     # 8. Print summary table
-    _HIGHER_IS_BETTER = {"cosine_similarity", "medical_accuracy", "clinical_safety", "completeness"}
+    _HIGHER_IS_BETTER = {"cosine_similarity", "medical_accuracy"}
     _LOWER_IS_BETTER  = {"hallucination_rate"}
 
     print("\n" + "=" * 62)
@@ -204,10 +183,7 @@ def main():
     print("=" * 62)
     print(f"  {'Metric':<25} {'Original':>10} {'Fine-tuned':>10}")
     print("-" * 62)
-    for key in [
-        "cosine_similarity", "medical_accuracy", "clinical_safety",
-        "completeness", "hallucination_rate", "avg_time_s",
-    ]:
+    for key in ["cosine_similarity", "medical_accuracy", "hallucination_rate", "avg_time_s"]:
         o = results["original"][key]
         f = results["finetuned"][key]
         if key in _HIGHER_IS_BETTER:

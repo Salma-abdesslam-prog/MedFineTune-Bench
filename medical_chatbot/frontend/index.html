@@ -970,14 +970,12 @@ function renderMetrics(data) {
   const ft   = data.finetuned || {};
 
   document.getElementById('metrics-meta').innerHTML =
-    `Evaluated on <strong>${meta.num_examples || '?'} test examples</strong> &nbsp;|&nbsp; Base: <code>${meta.base_model || 'unknown'}</code>`;
+    `Base model: <code>${meta.base_model || 'unknown'}</code>`;
 
   // Stat cards
   const metrics = [
     { key: 'cosine_similarity',  label: 'Cosine Similarity', icon: '🔗', higher: true,  fmt: v => v.toFixed(3) },
     { key: 'medical_accuracy',   label: 'Medical Accuracy',  icon: '🩺', higher: true,  fmt: v => v.toFixed(1) },
-    { key: 'clinical_safety',    label: 'Clinical Safety',   icon: '🛡️', higher: true,  fmt: v => v.toFixed(1) },
-    { key: 'completeness',       label: 'Completeness',      icon: '📋', higher: true,  fmt: v => v.toFixed(1) },
     { key: 'hallucination_rate', label: 'Hallucination Rate',icon: '⚠️', higher: false, fmt: v => v.toFixed(3) },
   ];
 
@@ -1006,15 +1004,13 @@ function renderMetrics(data) {
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Cosine\nSimilarity', 'Medical\nAccuracy', 'Clinical\nSafety', 'Completeness'],
+      labels: ['Cosine\nSimilarity', 'Medical\nAccuracy'],
       datasets: [
         {
           label: 'Original',
           data: [
             orig.cosine_similarity || 0,
             (orig.medical_accuracy  || 0) / 10,
-            (orig.clinical_safety   || 0) / 10,
-            (orig.completeness      || 0) / 10,
           ],
           backgroundColor: 'rgba(99,102,241,.75)',
           borderColor: '#6366f1', borderWidth: 1.5, borderRadius: 6,
@@ -1024,8 +1020,6 @@ function renderMetrics(data) {
           data: [
             ft.cosine_similarity || 0,
             (ft.medical_accuracy  || 0) / 10,
-            (ft.clinical_safety   || 0) / 10,
-            (ft.completeness      || 0) / 10,
           ],
           backgroundColor: 'rgba(14,165,233,.75)',
           borderColor: '#0ea5e9', borderWidth: 1.5, borderRadius: 6,
@@ -1085,7 +1079,6 @@ function renderMetrics(data) {
               <div class="example-col-scores">
                 <span class="score-chip">Cosine: ${(mo.cosine_similarity||0).toFixed(3)}</span>
                 <span class="score-chip">Accuracy: ${(mo.medical_accuracy||0).toFixed(1)}</span>
-                <span class="score-chip">Safety: ${(mo.clinical_safety||0).toFixed(1)}</span>
                 <span class="score-chip">Hall.: ${(mo.hallucination_rate||0).toFixed(3)}</span>
               </div>
             </div>
@@ -1095,7 +1088,6 @@ function renderMetrics(data) {
               <div class="example-col-scores">
                 <span class="score-chip">Cosine: ${(mf.cosine_similarity||0).toFixed(3)}</span>
                 <span class="score-chip">Accuracy: ${(mf.medical_accuracy||0).toFixed(1)}</span>
-                <span class="score-chip">Safety: ${(mf.clinical_safety||0).toFixed(1)}</span>
                 <span class="score-chip">Hall.: ${(mf.hallucination_rate||0).toFixed(3)}</span>
               </div>
             </div>

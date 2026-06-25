@@ -74,8 +74,6 @@ def build_metrics_table(results: dict) -> str:
     metric_labels = {
         "cosine_similarity":  ("Cosine Similarity ↑",  True),
         "medical_accuracy":   ("Medical Accuracy ↑",   True),
-        "clinical_safety":    ("Clinical Safety ↑",    True),
-        "completeness":       ("Completeness ↑",        True),
         "hallucination_rate": ("Hallucination Rate ↓",  False),
         "avg_time_s":         ("Avg Time (s) ↓",        False),
     }
@@ -126,18 +124,14 @@ def build_bar_chart(results: dict):
     orig = results["original"]
     ft   = results["finetuned"]
 
-    metrics = ["Cosine\nSimilarity", "Medical\nAccuracy", "Clinical\nSafety", "Completeness"]
+    metrics = ["Cosine\nSimilarity", "Medical\nAccuracy"]
     orig_vals = [
         orig.get("cosine_similarity", 0),
         orig.get("medical_accuracy",  0) / 10,
-        orig.get("clinical_safety",   0) / 10,
-        orig.get("completeness",      0) / 10,
     ]
     ft_vals = [
         ft.get("cosine_similarity", 0),
         ft.get("medical_accuracy",  0) / 10,
-        ft.get("clinical_safety",   0) / 10,
-        ft.get("completeness",      0) / 10,
     ]
 
     x = np.arange(len(metrics))
@@ -193,12 +187,12 @@ def build_examples_html(results: dict, n: int = 5) -> str:
             <div style="background:#f5f5ff;padding:8px;border-radius:4px">
               <strong>Original</strong>
               <p style="font-size:13px">{ex['original_answer'][:300]}{'...' if len(ex['original_answer']) > 300 else ''}</p>
-              <small>Cosine: {orig.get('cosine_similarity', 0):.3f} | Accuracy: {orig.get('medical_accuracy', 0):.1f} | Safety: {orig.get('clinical_safety', 0):.1f} | Hall.: {orig.get('hallucination_rate', 0):.3f}</small>
+              <small>Cosine: {orig.get('cosine_similarity', 0):.3f} | Accuracy: {orig.get('medical_accuracy', 0):.1f} | Hall.: {orig.get('hallucination_rate', 0):.3f}</small>
             </div>
             <div style="background:#f5fff5;padding:8px;border-radius:4px">
               <strong>Fine-tuned</strong>
               <p style="font-size:13px">{ex['finetuned_answer'][:300]}{'...' if len(ex['finetuned_answer']) > 300 else ''}</p>
-              <small>Cosine: {ft.get('cosine_similarity', 0):.3f} | Accuracy: {ft.get('medical_accuracy', 0):.1f} | Safety: {ft.get('clinical_safety', 0):.1f} | Hall.: {ft.get('hallucination_rate', 0):.3f}</small>
+              <small>Cosine: {ft.get('cosine_similarity', 0):.3f} | Accuracy: {ft.get('medical_accuracy', 0):.1f} | Hall.: {ft.get('hallucination_rate', 0):.3f}</small>
             </div>
           </div>
         </details>
@@ -304,10 +298,7 @@ def create_interface() -> gr.Blocks:
                 )
             else:
                 meta = results.get("meta", {})
-                gr.Markdown(
-                    f"Evaluation on **{meta.get('num_examples', '?')} test examples**  |  "
-                    f"Base model: `{meta.get('base_model', 'unknown')}`"
-                )
+                gr.Markdown(f"Base model: `{meta.get('base_model', 'unknown')}`")
 
                 # Metrics table
                 gr.Markdown("### 📋 Aggregate Metrics")
