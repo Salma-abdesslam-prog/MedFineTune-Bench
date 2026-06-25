@@ -1,0 +1,2 @@
+medical_chatbot/outputs/lora_adapter/adapter_model.safetensors filter=lfs diff=lfs merge=lfs -text
+medical_chatbot/outputs/lora_adapter/checkpoint-*/*.safetensors filter=lfs diff=lfs merge=lfs -text
