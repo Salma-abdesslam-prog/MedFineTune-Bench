@@ -89,7 +89,7 @@ LOGGING_STEPS        = 10
 # ============================================================
 # Evaluation
 # ============================================================
-MAX_EVAL_EXAMPLES    = 50      # Reduced from 100 to avoid sleep-induced VRAM fragmentation
+MAX_EVAL_EXAMPLES    = 22
 
 # ============================================================
 # Generation (inference)
