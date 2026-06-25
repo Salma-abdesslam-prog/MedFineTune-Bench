@@ -4,13 +4,18 @@ End-to-end NLP project: dataset preparation → QLoRA fine-tuning → quantitati
 
 ## Results
 
+Evaluated on 22 test examples from MedQuAD using heuristic fallbacks (no LLM judge key set).
+
 | Metric | Base Model | Fine-tuned | Δ |
 |--------|-----------|------------|---|
-| Cosine Similarity ↑ | — | — | run `3_evaluate.py` |
-| Medical Accuracy ↑ (0–10) | — | — | LLM judge |
-| Hallucination Rate ↓ (0–1) | — | — | claim-level |
+| Cosine Similarity ↑ | 0.9686 | **0.9712** | +0.0026 |
+| Medical Accuracy ↑ (0–10) | 2.9561 | **3.3784** | +0.4223 |
+| Hallucination Rate ↓ (0–1) | 0.3787 | **0.1330** | −0.2457 |
+| Avg Inference Time (s) | **31.60** | 37.90 | +6.30 |
 
-> Run `python 3_evaluate.py` to populate this table. Set `JUDGE_API_KEY` or `OPENAI_API_KEY` for LLM-as-a-Judge scoring; without a key, heuristic fallbacks are used.
+> **Cosine Similarity** uses biomedical sentence embeddings (`pritamdeka/S-PubMedBert-MS-MARCO`).  
+> **Medical Accuracy** and **Hallucination Rate** used heuristic word-overlap fallbacks here. Set `JUDGE_API_KEY` or `OPENAI_API_KEY` for LLM-as-a-Judge scoring (GPT-4o-mini).  
+> Run `python 3_evaluate.py` to recompute on the full test set.
 
 ---
 
