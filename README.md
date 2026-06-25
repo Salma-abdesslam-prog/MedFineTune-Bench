@@ -1,16 +1,17 @@
-[README.md](https://github.com/user-attachments/files/29147436/README.md)
 # 🏥 Medical Chatbot — QLoRA Fine-tuned Qwen 2.5 3B
 
 End-to-end NLP project: dataset preparation → QLoRA fine-tuning → quantitative evaluation → production web interface comparing the base and fine-tuned models side-by-side.
 
 ## Results
 
+Evaluated on 22 test examples from MedQuAD. Cosine Similarity uses PubMedBERT embeddings; Medical Accuracy and Hallucination Rate use heuristic fallbacks (set `JUDGE_API_KEY` for LLM-as-a-Judge scoring).
+
 | Metric | Base Model | Fine-tuned | Δ |
 |--------|-----------|------------|---|
-| BLEU-4 | 2.78 | **9.89** | +256% |
-| ROUGE-L | 0.177 | **0.276** | +56% |
-| BERTScore F1 | 0.782 | **0.824** | +5.4% |
-| Perplexity | 5.62 | **4.20** | −25% |
+| Cosine Similarity ↑ | 0.9686 | **0.9712** | +0.0026 |
+| Medical Accuracy ↑ (0–10) | 2.9561 | **3.3784** | +0.4223 |
+| Hallucination Rate ↓ (0–1) | 0.3787 | **0.1330** | −0.2457 |
+| Avg Inference Time (s) | **31.60** | 37.90 | +6.30 |
 
 ---
 
@@ -21,7 +22,7 @@ End-to-end NLP project: dataset preparation → QLoRA fine-tuning → quantitati
 - **Dataset**: [MedQuAD](https://huggingface.co/datasets/lavita/MedQuAD) — 10 610 medical Q&A pairs
 - **Backend**: FastAPI + Server-Sent Events (SSE) streaming
 - **Frontend**: Custom web UI — HTML/CSS/JS, no framework dependencies
-- **Metrics**: BLEU-4, ROUGE-L, BERTScore, Perplexity
+- **Metrics**: Cosine Semantic Similarity, Medical Accuracy (LLM-as-a-Judge), Hallucination Rate
 
 ---
 
@@ -33,7 +34,7 @@ medical_chatbot/
 ├── 1_prepare_data.py         # Download MedQuAD, clean, 90/5/5 split
 ├── 2_finetune_fallback.py    # QLoRA training (Windows-compatible)
 ├── 2_finetune.py             # QLoRA training (Unsloth — Linux/WSL2 only)
-├── 3_evaluate.py             # BLEU / ROUGE-L / BERTScore / Perplexity
+├── 3_evaluate.py             # Cosine Similarity / Medical Accuracy / Hallucination Rate
 ├── api.py                    # FastAPI backend with SSE streaming  ← main entry point
 ├── frontend/
 │   └── index.html            # Chat UI (side-by-side comparison, metrics view)
@@ -42,7 +43,7 @@ medical_chatbot/
 │   └── results.json          # Evaluation results
 ├── utils/
 │   ├── inference.py          # Model loading, adapter toggling, generation
-│   └── metrics.py            # NLP metric helpers
+│   └── metrics.py            # Medical metric helpers (embeddings + LLM judge)
 └── requirements.txt
 ```
 
@@ -75,7 +76,7 @@ pip install -r requirements.txt
 ```bash
 python 1_prepare_data.py       # Download + split dataset (~5 min)
 python 2_finetune_fallback.py  # Train QLoRA adapter (~4–6 h on 6 GB GPU)
-python 3_evaluate.py           # Evaluate on 50 test examples (~30 min)
+python 3_evaluate.py           # Evaluate on test examples (~25 min)
 python api.py                  # Start web UI → http://localhost:8000
 ```
 
@@ -100,7 +101,7 @@ python api.py                  # Start web UI → http://localhost:8000
 
 The web UI (`api.py` + `frontend/index.html`) features:
 - Side-by-side **Compare mode** — both models answer the same question simultaneously
-- **Metrics dashboard** — Chart.js bar chart + per-example BERTScore breakdown
+- **Metrics dashboard** — Chart.js bar chart + per-example cosine similarity breakdown
 - SSE streaming — typing indicator while the model generates
 - No framework dependencies — pure HTML/CSS/JS
 
